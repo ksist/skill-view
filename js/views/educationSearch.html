@@ -1,0 +1,28 @@
+<h1>教育検索</h1>
+<div>
+    <label for="educationName" class="oj-label-inline">講座名称</label>
+    <input id="educationName" aria-label="search box" placeholder="search" 
+        data-bind="value: nameSearch, valueUpdate: 'afterkeydown', 
+        ojComponent: {component: 'ojInputText'}"/>
+</div>
+<div id="educationListView">
+    <div class="oj-flex oj-flex-items-pad">
+        <ul id="listview"
+            data-bind="ojComponent: {component: 'ojListView',
+            data: dataSource,
+            item: {template: 'list_template'},
+            selectionMode: 'single',
+            rootAttributes: {style: 'width:100%;height:400px;overflow:auto'},
+            scrollPolicy: 'loadMoreOnScroll',
+            scrollPolicyOptions: {fetchSize: 10}}">
+        </ul>
+    </div>
+</div>
+
+<script id="list_template" type="text/html">
+    <li data-bind="click: function(data, event){$root.showEmployeeList(data,event)}">
+        <div data-bind="text: $data['educationName']"></div>
+        <div data-bind="text: $data['institute']" 
+            style="font-size: smaller"></div>
+    </li>
+</script>

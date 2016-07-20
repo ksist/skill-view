@@ -1,0 +1,51 @@
+[
+    {
+        "employeeCode": "0845",
+        "employeeName": "高森　正延",
+        "belongName": "事業推進本部",
+        "grade": "",
+        "jobTitle": "本部長"
+    },
+    {
+        "employeeCode": "9054",
+        "employeeName": "鈴木　康弘",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    },
+    {
+        "employeeCode": "0864",
+        "employeeName": "藤江　義文",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    },
+    {
+        "employeeCode": "1145",
+        "employeeName": "定金　充芳",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    },
+    {
+        "employeeCode": "1818",
+        "employeeName": "大住　孝正",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    },
+    {
+        "employeeCode": "2917",
+        "employeeName": "笠井　智",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    },
+    {
+        "employeeCode": "3352",
+        "employeeName": "小島　仁美",
+        "belongName": "事業推進本部　技術戦略推進部",
+        "grade": "",
+        "jobTitle": ""
+    }
+]

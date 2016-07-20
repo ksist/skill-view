@@ -1,0 +1,50 @@
+<h2>資格</h2>
+<div style="font-size: small">
+<table data-bind="ojComponent: {component: 'ojTable', 
+            data: examData,
+            columns: [
+                {headerText: '資格名'},
+                {headerText: '資格グループ'},
+                {headerText: '資格細目'},
+                {headerText: '取得日'},
+                {headerText: '備考'}
+            ],
+            rowTemplate: 'exam_template',
+            rootAttributes: {'style':'width: 100%; height: 150px;'}
+        }">
+</table>
+<h2>教育</h2>
+<div style="font-size: small">
+<table data-bind="ojComponent: {component: 'ojTable', 
+            data: eduData,
+            columns: [
+                {headerText: '講座名'},
+                {headerText: '教育機関名'},
+                {headerText: '開始日'},
+                {headerText: '終了日'},
+                {headerText: '受講状況'}
+            ],
+            rowTemplate: 'edu_template',
+            rootAttributes: {'style':'width: 100%; height: 150px;'}
+        }">
+</table>
+</div>
+
+<script id="exam_template" type="text/html">
+    <tr data-bind="click: function(data, event){$root.showEmployeeList(data,event)}">
+        <td data-bind="text: examName"></td>
+        <td data-bind="text: examGroup"></td>
+        <td data-bind="text: examSaimoku"></td>
+        <td data-bind="text: qualifyDate"></td>
+        <td data-bind="text: bikou"></td>
+    </tr>
+</script>
+<script id="edu_template" type="text/html">
+    <tr data-bind="click: function(data, event){$root.showEmployeeList(data,event)}">
+        <td data-bind="text: educationName"></td>
+        <td data-bind="text: institute"></td>
+        <td data-bind="text: startDate"></td>
+        <td data-bind="text: endDate"></td>
+        <td data-bind="text: status"></td>
+    </tr>
+</script>

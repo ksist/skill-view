@@ -1,0 +1,37 @@
+[
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "ITサービスマネージャ（H21)", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "プロジェクトマネージャ（H21)", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "情報セキュリティスペシャリスト（H21)", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "データベーススペシャリスト（H21)", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "システムアーキテクト（H21)", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "ソフトウェア開発技術者", 
+        "examSaimoku": ""
+    }, 
+    {
+        "examGroup": "情報処理技術者試験", 
+        "examName": "基本情報技術者", 
+        "examSaimoku": ""
+    }
+]

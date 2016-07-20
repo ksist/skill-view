@@ -1,0 +1,35 @@
+<h2>業務経歴</h2>
+<div style="font-size: small">
+<table data-bind="ojComponent: {component: 'ojTable', 
+            data: careerData,
+            columns: [
+                {headerText: '業種'},
+                {headerText: '期間'},
+                {headerText: '業務名'},
+                {headerText: '業務内容'},
+                {headerText: '人数'},
+                {headerText: 'OS'},
+                {headerText: '言語'},
+                {headerText: 'DB'},
+                {headerText: '役割'},
+                {headerText: '作業工程'}
+            ],
+            rowTemplate: 'row_template',
+            rootAttributes: {'style':'width: 100%; height: 150px;'}
+        }">
+</table>
+
+<script id="row_template" type="text/html">
+    <tr>
+        <td data-bind="text: industryType"></td>
+        <td data-bind="text: spanFrom + ' ～ ' + spanTo"></td>
+        <td data-bind="text: workName"></td>
+        <td data-bind="text: workOutline"></td>
+        <td data-bind="text: projectNumber"></td>
+        <td data-bind="text: os"></td>
+        <td data-bind="text: language"></td>
+        <td data-bind="text: db"></td>
+        <td data-bind="text: role"></td>
+        <td data-bind="text: phase"></td>
+    </tr>
+</script>
