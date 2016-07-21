@@ -6,7 +6,13 @@
 
 仕様等は[こちら](/gitbucket/2917/skill-spec)を参照
 
+## Demo（デモ）
+[デモサイト](http://172.16.9.99/)
+
 ## Requirements（使用条件）
+- [Google Chrome](https://www.google.co.jp/chrome/)
+  - IEだと画面が崩れる可能性があります
+  - FireFox、Safari 等 他のブラウザは動作未確認
 - [Node.js](https://nodejs.org/)
 - [bower](https://bower.io/)
 - [grunt](http://gruntjs.com/)
@@ -20,12 +26,21 @@ npm config set proxy {server}:{port}
 npm config set https-proxy {server}:{port}
 ```
 
-2. bower、grunt のインストール
+3. bower、grunt のインストール
 ```
 npm -g install bower grunt-cli
 ```
 
-3. 実行
+4. リポジトリをclone
+```
+git clone http://172.16.9.99/gitbucket/git/2917/skill-view.git
+```
+
+5. 必要なライブラリのダウンロード
+```
+npm install & bower install
+```
+6. 実行
 ```
 grunt serve
 ```
