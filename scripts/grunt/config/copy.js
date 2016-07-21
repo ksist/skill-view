@@ -11,7 +11,7 @@ module.exports = {
   {
     src: [
       "**",
-      "!bower_components/**",
+      "bower_components/**",
       "!grunt/**",
       "!scripts/**",
       "!js/**/*.js",

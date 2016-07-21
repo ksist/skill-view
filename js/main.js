@@ -16,7 +16,7 @@ requirejs.config(
     "promise": "../bower_components/es6-promise/promise",
     "hammerjs": "../bower_components/hammerjs/hammer",
     "ojdnd": "../bower_components/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0",
-    "ojs": "../bower_components/oraclejet/dist/js/libs/oj/min",
+    "ojs": "../bower_components/oraclejet/dist/js/libs/oj/debug",
     "ojL10n": "../bower_components/oraclejet/dist/js/libs/oj/ojL10n",
     "ojtranslations": "../bower_components/oraclejet/dist/js/libs/oj/resources",
     "knockout-amd-helpers": "../bower_components/knockout-amd-helpers/build/knockout-amd-helpers",
