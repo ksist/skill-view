@@ -17,7 +17,7 @@
 - [bower](https://bower.io/)
 - [grunt](http://gruntjs.com/)
 
-## Run（動かし方）
+## Install（インストール方法）
 1. Node.js のインストール  
    [この辺](http://qiita.com/krtbk1d/items/9001ae194571feb63a5e)を参考にインストール
 2. proxy の設定  
@@ -31,16 +31,12 @@ npm config set https-proxy {server}:{port}
 npm -g install bower grunt-cli
 ```
 
-4. リポジトリをclone
-```
-git clone http://172.16.9.99/gitbucket/git/2917/skill-view.git
-```
-
-5. 必要なライブラリのダウンロード
+## Run（動かし方）
+1. 必要なライブラリのダウンロード
 ```
 npm install & bower install
 ```
-6. 実行
+2. 実行
 ```
 grunt serve
 ```
