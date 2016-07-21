@@ -10,18 +10,18 @@ requirejs.config(
   paths:
   //injector:mainReleasePaths
   {
-    "knockout": "libs/knockout/knockout-3.4.0.debug",
-    "jquery": "libs/jquery/jquery-2.1.3",
-    "jqueryui-amd": "libs/jquery/jqueryui-amd-1.11.4",
-    "promise": "libs/es6-promise/promise-1.0.0",
-    "hammerjs": "libs/hammer/hammer-2.0.4",
-    "ojdnd": "libs/dnd-polyfill/dnd-polyfill-1.0.0",
-    "ojs": "libs/oj/v2.0.2/debug",
-    "ojL10n": "libs/oj/v2.0.2/ojL10n",
-    "ojtranslations": "libs/oj/v2.0.2/resources",
-    "knockout-amd-helpers": "libs/knockout/knockout-amd-helpers",
-    "text": "libs/require/text",
-    "signals": "libs/js-signals/signals"
+    "knockout": "../bower_components/knockout/dist/knockout.debug",
+    "jquery": "../bower_components/jquery/dist/jquery",
+    "jqueryui-amd": "../bower_components/jquery-ui/ui",
+    "promise": "../bower_components/es6-promise/promise",
+    "hammerjs": "../bower_components/hammerjs/hammer",
+    "ojdnd": "../bower_components/oraclejet/dist/js/libs/dnd-polyfill/dnd-polyfill-1.0.0",
+    "ojs": "../bower_components/oraclejet/dist/js/libs/oj/min",
+    "ojL10n": "../bower_components/oraclejet/dist/js/libs/oj/ojL10n",
+    "ojtranslations": "../bower_components/oraclejet/dist/js/libs/oj/resources",
+    "knockout-amd-helpers": "../bower_components/knockout-amd-helpers/build/knockout-amd-helpers",
+    "text": "../bower_components/text/text",
+    "signals": "../bower_components/js-signals/dist/signals"
   }
   //endinjector
   ,
