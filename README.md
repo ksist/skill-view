@@ -22,8 +22,8 @@
    [この辺](http://qiita.com/krtbk1d/items/9001ae194571feb63a5e)を参考にインストール
 2. proxy の設定  
 ```
-npm config set proxy {server}:{port}
-npm config set https-proxy {server}:{port}
+npm config set proxy http://{server}:{port}
+npm config set https-proxy http://{server}:{port}
 ```
 
 3. bower、grunt のインストール
