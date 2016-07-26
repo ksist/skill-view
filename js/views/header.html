@@ -1,0 +1,29 @@
+<div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+    <div class="oj-flex-bar-middle">
+        <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: $root.titleLabel"></span>
+    </div>
+</div>
+<div class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-lg-justify-content-flex-end oj-md-justify-content-flex-end"
+    data-bind="ojComponent:{
+                    drillMode: 'none',
+                    component: 'ojNavigationList',
+                    selection: $root.router.stateId(),
+                    optionChange: $root.optionChangeHandler,
+                    edge: 'top'}" >
+    <ul class="oj-navigationlist-element">
+    <li id="search" data-bind="click: $root.showHome()">
+        <a href="#">社員検索</a>
+    </li>
+    <li role="separator" class="oj-navigationlist-divider"></li>
+    <li id="examSearch" data-bind="click: $root.showExam()">
+        <a href="#">資格検索</a>
+    </li>
+    <li role="separator" class="oj-navigationlist-divider"></li>
+    <li id="educationSearch" data-bind="click: $root.showEducation()">
+        <a href="#">教育検索</a>
+    </li>
+    <li id="inventorySearch" data-bind="click: $root.showInventory()">
+        <a href="#">スキル検索</a>
+    </li>
+    </ul>
+</div>
