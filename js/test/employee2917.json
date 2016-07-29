@@ -21,7 +21,7 @@
     }
   ],
   "inventories": [
-    {"inventoryCode":"010101","daiName":"ハードウェア知識","chuName":"(1)ハードウェア","shoName":"01．Express5800/100", "level": "0", "level": "0"},
+    {"inventoryCode":"010101","daiName":"ハードウェア知識","chuName":"(1)ハードウェア","shoName":"01．Express5800/100", "level": "0"},
     {"inventoryCode":"010102","daiName":"ハードウェア知識","chuName":"(1)ハードウェア","shoName":"02．Express5800/600(7200系含む）", "level": "0"},
     {"inventoryCode":"010103","daiName":"ハードウェア知識","chuName":"(1)ハードウェア","shoName":"03．SUN UNIXマシン", "level": "0"},
     {"inventoryCode":"010104","daiName":"ハードウェア知識","chuName":"(1)ハードウェア","shoName":"04．HP UNIXマシン", "level": "0"},
