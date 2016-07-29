@@ -2,26 +2,22 @@
 <div id="personaldetails" style="margin-bottom:26px;">
     <div style="margin-top: 10px;" class="oj-flex">
         <div class="oj-flex-item oj-sm-4 oj-md-1 oj-lg-1">
-            <div>
-                <label for="employeeCode" class="oj-label">社員番号</label>
-            </div>
-            <div>
-                <label for="employeeName" class="oj-label">社員名</label>
-            </div>
-            <div>
-                <label for="belongName" class="oj-label">所属名</label>
-            </div>
+            <label for="employeeCode" class="oj-label">社員番号</label>
+            <label for="employeeName" class="oj-label">社員名</label>
+            <label for="area" class="oj-label">地区</label>
         </div>
-        <div class="oj-flex-item oj-sm-8 oj-md-5 oj-lg-5">
+        <div class="oj-flex-item oj-sm-8 oj-md-3 oj-lg-2">
             <div id="employeeCode" class="oj-label" data-bind="text: employee.employeeCode"></div>
             <div id="employeeName" class="oj-label" data-bind="text: employee.employeeName"></div>
-            <div id="belongName" class="oj-label" data-bind="text: employee.belongName"></div>
+            <div id="area" class="oj-label" data-bind="text: employee.area"></div>
         </div>
         <div class="oj-flex-item oj-sm-4 oj-md-1 oj-lg-1">
+            <label for="belongName" class="oj-label">所属名</label>
             <label for="grade" class="oj-label">等格</label>
             <label for="jobTitle" class="oj-label">役職</label>
         </div>
-        <div class="oj-flex-item oj-sm-8 oj-md-5 oj-lg-5">
+        <div class="oj-flex-item oj-sm-8 oj-md-7 oj-lg-8">
+            <div id="belongName" class="oj-label" data-bind="text: employee.belongName"></div>
             <div id="grade" class="oj-label" data-bind="text: employee.grade"></div>
             <div id="jobTitle" class="oj-label" data-bind="text: employee.jobTitle"></div>
         </div>
