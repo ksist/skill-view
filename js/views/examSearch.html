@@ -13,8 +13,7 @@
             item: {template: 'examlist_template'},
             selectionMode: 'single',
             rootAttributes: {style: 'width:100%;height:400px;overflow:auto'},
-            scrollPolicy: 'loadMoreOnScroll',
-            scrollPolicyOptions: {fetchSize: 10}}">
+            scrollPolicy: 'auto'}">
         </ul>
     </div>
 </div>
@@ -22,7 +21,7 @@
 <script id="examlist_template" type="text/html">
     <li data-bind="click: function(data, event){$root.showEmployeeList(data,event)}">
         <div data-bind="text: $data['examName']"></div>
-        <div data-bind="text: $data['examGroup'] + ' ' + $data['examSaimoku']" 
+        <div data-bind="text: $data['examGroup']" 
             style="font-size: smaller"></div>
     </li>
 </script>
