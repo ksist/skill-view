@@ -71,9 +71,6 @@ require(["ojs/ojcore",
                         childRouter.dispose();
                     }
                 },
-                'employeeFromExam': {label: '社員一覧'},
-                'employeeFromEdu': {label: '社員一覧'},
-                'employeeFromSkill': {label: '社員一覧'},
                 'employeeSearch': {label: '社員一覧'},
                 'examSearch': {label: '資格検索'},
                 'educationSearch': {label: '教育検索'},
@@ -87,7 +84,9 @@ require(["ojs/ojcore",
             self.optionChangeHandler = function (event, data) {
                 // Only go for user action events
                 // if (('ojAppNav' === event.target.id || 'ojAppNav2' === event.target.id) && event.originalEvent) {
+                if (event.originalEvent) {
                     self.router.go(data.value);
+                }
                 // }
             };
             self.showEmployee = function(employeeCode, data, event) {
