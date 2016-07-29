@@ -11,19 +11,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             var url = 'js/test/exams.json';
             $.getJSON(url).then(function(exams) {
                 $.each(exams, function() {
-                    if (this.examSaimoku == null) {
-                        self.allExam.push({
-                            examName: this.examName,
-                            examGroup: this.examGroup,
-                            examSaimoku: ""
-                        });
-                    } else {
-                        self.allExam.push({
-                            examName: this.examName,
-                            examGroup: this.examGroup,
-                            examSaimoku: this.examSaimoku
-                        });
-                    }
+                    self.allExam.push({
+                        examName: this.examName,
+                        examGroup: this.examGroup
+                    })
                 });
             });
             
