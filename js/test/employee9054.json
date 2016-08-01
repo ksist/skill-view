@@ -7,5 +7,81 @@
   "exams": [],
   "educations": [],
   "inventories": [],
-  "careers": []
+  "careers": [
+    {"industryType": "金融",
+    "startDate": "2014-07-01",
+    "endDate": "2014-08-01",
+    "workName": "電子債権",
+    "workOutline": "電子債権記録システム\r\nリファクタリング対応",
+    "projectCount": "7",
+    "os": "RedHat",
+    "language": "Java",
+    "db": "Oracle11g",
+    "role": "サブリーダー",
+    "phases": [
+      {"phaseName": "3.機能設計"}
+    ]
+    },
+    {"industryType": "損保",
+    "startDate": "2012-12-01",
+    "endDate": "2014-06-01",
+    "workName": "損害保険",
+    "workOutline": "損害保険システム更改",
+    "projectCount": "70",
+    "os": "Windows7",
+    "language": "C#",
+    "db": "Oracle11g",
+    "role": "サブリーダー",
+    "phases": [
+      {"phaseName": "7.結合テスト"},
+      {"phaseName": "19.品質分析・PMO"}
+    ]
+    },
+    {"industryType": "放送",
+    "startDate": "2012-06-01",
+    "endDate": "2012-12-01",
+    "workName": "営業放送システム",
+    "workOutline": "テレビ局　編成支援システム開発",
+    "projectCount": "12",
+    "os": "Windows7, WindowsServer, RedHat",
+    "language": "VB.Net, Java",
+    "db": "Oracle11g",
+    "role": "サブリーダー",
+    "phases": [
+      {"phaseName": "2.基本設計"},
+      {"phaseName": "3.機能設計"}
+    ]
+    },
+    {"industryType": "郵便",
+    "startDate": "2012-03-01",
+    "endDate": "2012-04-01",
+    "workName": "追跡システム",
+    "workOutline": "内国業務　現新連携（再配達依頼）",
+    "projectCount": "2",
+    "os": "UP-UX",
+    "language": "C　　Java",
+    "db": "Oracle9i",
+    "role": "プロジェクトマネージャー",
+    "phases": [
+      {"phaseName": "3.機能設計"}
+    ]
+    },
+    {"industryType": "金融",
+    "startDate": "2011-07-01",
+    "endDate": "2012-02-01",
+    "workName": "電子債権",
+    "workOutline": "電子債権記録システム構築",
+    "projectCount": "20",
+    "os": "RedHat",
+    "language": "Java",
+    "db": "Oracle11g",
+    "role": "サブリーダー",
+    "phases": [
+      {"phaseName": "1.調査分析・要件定義"},
+      {"phaseName": "2.基本設計"},
+      {"phaseName": "3.機能設計"},
+      {"phaseName": "4.詳細設計"}
+    ]
+    }
+  ]
 }
