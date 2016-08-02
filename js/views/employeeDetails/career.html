@@ -3,33 +3,52 @@
 <table data-bind="ojComponent: {component: 'ojTable', 
             data: careerData,
             columns: [
-                {headerText: '業種'},
                 {headerText: '期間'},
+                {headerText: '業種'},
                 {headerText: '業務名'},
-                {headerText: '業務内容'},
-                {headerText: '人数'},
                 {headerText: 'OS'},
                 {headerText: '言語'},
-                {headerText: 'DB'},
-                {headerText: '役割'},
-                {headerText: '作業工程'}
+                {headerText: 'DB'}
             ],
             rowTemplate: 'row_template',
-            rootAttributes: {'style':'width: 100%; height: 150px;'}
+            rootAttributes: {'style':'width: 100%; height: 400px'}
         }">
 </table>
 
 <script id="row_template" type="text/html">
     <tr>
+        <!-- ko if: $rowContext['depth'] == 1 -->
+        <td>
+            <div data-bind="ojComponent: {component: 'ojRowExpander', 
+                context: $rowContext}"></div>
+            <span data-bind="text: $parent.moment(startDate).format('YYYY/MM') 
+                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')"></span>
+        </td>
         <td data-bind="text: industryType"></td>
-        <td data-bind="text: spanFrom + ' ～ ' + spanTo"></td>
         <td data-bind="text: workName"></td>
-        <td data-bind="text: workOutline"></td>
-        <td data-bind="text: projectNumber"></td>
         <td data-bind="text: os"></td>
         <td data-bind="text: language"></td>
         <td data-bind="text: db"></td>
-        <td data-bind="text: role"></td>
-        <td data-bind="text: phase"></td>
+        <!-- /ko -->
+        <!-- ko if: $rowContext['depth'] == 2 -->
+        <td colspan="5" style="padding-left: 40px;">
+            <table style="width: 100%">
+                <tr>
+                    <th>作業内容</th>
+                    <th>役割</th>
+                    <th>人数</th>
+                    <th>作業工程</th>
+                </tr>
+                <tr>
+                    <td data-bind="text: workOutline"></td>
+                    <td data-bind="text: role"></td>
+                    <td data-bind="text: projectCount"></td>
+                    <td data-bind="foreach: phases">
+                    <span data-bind="text: phaseName"></span>　
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <!-- /ko -->
     </tr>
 </script>
