@@ -1,8 +1,10 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
-    function (oj, ko, $)
+define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable', 
+        'ojs/ojrowexpander', 'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource'],
+    function (oj, ko, $, moment)
     {
         function employeeViewModel() {
             var self = this;
+            self.moment = moment;
             self.allInventory = ko.observableArray([]);
             self.daiArray = ko.observableArray([]);
             self.chuArray = ko.observableArray([]);
@@ -47,7 +49,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                                 daiName: r
                             });
                         });
-                        self.careerData = new oj.ArrayTableDataSource(person.careers);
+                        var options = [];
+                        self.careerData = new oj.FlattenedTreeTableDataSource(
+                            new oj.FlattenedTreeDataGridDataSource(
+                                new oj.JsonTreeDataSource(convertCareerArray(person.careers)), options));
                         resolve(true);
                     }).fail(function (error) {
                         console.log('Error: ' + error.message);
@@ -67,10 +72,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.shoSource = ko.computed(function() {
                 return new oj.ArrayTableDataSource(self.shoArray);
             });
-
-            // self.levelSource = ko.computed(function() {
-            //     return new oj.ArrayTableDataSource(self.levelArray);
-            // });
 
             function distinctArray(array, item) {
                 var tempArray = new Array();
@@ -121,6 +122,25 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 return true;
             }
 
+            function convertCareerArray(careers) {
+                var treeData = [];
+                careers.forEach(function(career, i) {
+                    var tempCareer = {"attr": {}, "children": [{"attr": {}}]};
+                    tempCareer.attr.industryType = career.industryType;
+                    tempCareer.attr.startDate = career.startDate;
+                    tempCareer.attr.endDate = career.endDate;
+                    tempCareer.attr.workName = career.workName;
+                    tempCareer.attr.os = career.os;
+                    tempCareer.attr.language = career.language;
+                    tempCareer.attr.db = career.db;
+                    tempCareer.children[0].attr.workOutline = career.workOutline;
+                    tempCareer.children[0].attr.projectCount = career.projectCount;
+                    tempCareer.children[0].attr.role = career.role;
+                    tempCareer.children[0].attr.phases = career.phases;
+                    treeData.push(tempCareer);
+                })
+                return treeData;
+            }
 
         }
         return employeeViewModel;

@@ -10,5 +10,6 @@
   "ojtranslations": "../bower_components/oraclejet/dist/js/libs/oj/resources",
   "knockout-amd-helpers": "../bower_components/knockout-amd-helpers/build/knockout-amd-helpers.min",
   "text": "../bower_components/text/text",
-  "signals": "../bower_components/js-signals/dist/signals.min"
+  "signals": "../bower_components/js-signals/dist/signals.min",
+  "moment": "../bower_components/moment/min/moment.min"
 }

@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "dependencies": {
     "oraclejet": "2.0.2",
-    "knockout-amd-helpers": "^0.7.4"
+    "knockout-amd-helpers": "^0.7.4",
+    "moment": "^2.14.1"
   }
 }
