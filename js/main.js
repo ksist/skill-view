@@ -59,6 +59,7 @@ require(["ojs/ojcore",
             self.copyright = ko.observable("Copyright © 2016, NCS&A Co., Ltd.");
             self.params = ko.observable();
 
+            // URLルールティングの設定
             var router = oj.Router.rootInstance;
             router.configure({
                 'search': {label: '社員検索', isDefault: true},
@@ -82,34 +83,59 @@ require(["ojs/ojcore",
                 return router.moduleConfig;
             })
 
+            /**
+             * タブ変更時
+             */
             self.optionChangeHandler = function (event, data) {
-                // Only go for user action events
-                // if (('ojAppNav' === event.target.id || 'ojAppNav2' === event.target.id) && event.originalEvent) {
                 if (event.originalEvent) {
                     self.router.go(data.value);
                 }
-                // }
             };
+
+            /**
+             * 社員選択時
+             */
             self.showEmployee = function(employeeCode, data, event) {
                 history.pushState(null, '', '?root=employee&emp=' + employeeCode);
                 oj.Router.sync();
             }
 
+            /**
+             * 社員の絞り込み
+             * dataに登録されている条件で絞り込む
+             */
             self.showEmployeeList = function(data, event) {
                 self.params = data;
                 history.pushState(null, '', '?root=employeeSearch');
                 oj.Router.sync();
             }
 
+            /**
+             * 社員検索タブ
+             * optionChangeHandler は変更された時しか呼ばれないため、
+             * 選択されているタブがクリックされた時用（以下３つも同じ）
+             */
             self.showHome = function() {
                 self.router.go('search');
             }
+
+            /**
+             * 資格検索タブ
+             */
             self.showExam = function() {
                 self.router.go('examSearch');
             }
+            
+            /**
+             * 教育検索タブ
+             */
             self.showEducation = function() {
                 self.router.go('educationSearch');
             }
+
+            /**
+             * スキル検索タブ
+             */
             self.showInventory = function() {
                 self.router.go('inventorySearch');
             }

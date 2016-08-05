@@ -9,6 +9,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 self.condition = $params;
 
                 var url;
+                // 呼び出し元から渡されたパラメータの種類によってデータの取得元を変更
                 if (self.condition.examName) {
                     url = "js/test/employee" + self.condition.examName + ".json";
                 } else if (self.condition.educationCode) {
@@ -16,7 +17,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 } else if (self.condition.inventoryCode) {
                     url = "js/test/employeeskill" + self.condition.inventoryCode + "level" + self.condition.level + ".json";
                 }
+
+                // データを配列にセットする前に全削除
                 self.allEmployee.removeAll();
+                // データの取得
                 $.getJSON(url).then(function(employees) {
                     $.each(employees, function() {
                         self.allEmployee.push({
@@ -27,12 +31,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                             jobTitle: this.jobTitle
                         });
                     });
-
                 }).fail(function (error) {
                     console.log('Error: ' + error.message);
                 });
 
-
+                /**
+                 * 社員の絞り込み（社員番号 & 社員名）
+                 */
                 self.filteredAllEmployee = ko.computed(function () {
                     var employeeFilter = new Array();
 

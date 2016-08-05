@@ -7,6 +7,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.ready = ko.observable(false);
             self.nameSearch = ko.observable('');
 
+            // 教育データの読み込み
             // var url = 'http://localhost:8080/skill/exams';
             var url = 'js/test/educations.json';
             $.getJSON(url).then(function(educations) {
@@ -19,7 +20,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 });
             });
             
-
+            /**
+             * 教育の絞り込み
+             */
             self.filteredallExam = ko.computed(function () {
                 var filter = new Array();
 
@@ -29,18 +32,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         filter = self.allExam();
                     } else {
                         ko.utils.arrayFilter(self.allExam(),
-                                function (r) {
-                                    var token = self.nameSearch().toLowerCase();
-                                    if (r.educationName.toLowerCase().indexOf(token) >= 0) {
-                                        filter.push(r);
-                                    }
-                                });
+                            function (r) {
+                                var token = self.nameSearch().toLowerCase();
+                                if (r.educationName.toLowerCase().indexOf(token) >= 0) {
+                                    filter.push(r);
+                                }
+                            });
                     }
                 }
 
                 self.ready(true);
                 return filter;
             });
+
             self.dataSource = ko.computed(function () {
                 return new oj.ArrayTableDataSource(self.filteredallExam());
             });

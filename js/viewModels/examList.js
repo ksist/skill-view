@@ -14,7 +14,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 });
             });
             self.dataSource = new oj.ArrayTableDataSource(
-                    self.data
+                self.data
             );
         }
         return ExamListViewModel;

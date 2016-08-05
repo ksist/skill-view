@@ -11,6 +11,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             self.shoArray = ko.observableArray([]);
             self.levelArray = ko.observableArray([]);
 
+            /**
+             * スキルズインベントリデータの取得
+             */
             var url = 'js/test/inventories.json';
             $.getJSON(url).then(function(inventories) {
                 $.each(inventories, function() {
@@ -44,6 +47,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 return new oj.ArrayTableDataSource(self.levelArray);
             });
 
+            /**
+             * 大項目選択時に呼ばれる
+             * 中項目のリストを表示する
+             */
             self.selectDaiList = function (daiName) {
                 self.chuArray.removeAll();
                 self.shoArray.removeAll();
@@ -70,6 +77,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 });
             }
 
+            /**
+             * 中項目選択時に呼ばれる
+             * 小項目のリストを表示する
+             */
             self.selectChuList = function (chuName) {
                 self.shoArray.removeAll();
                 self.levelArray.removeAll();
@@ -82,6 +93,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                     })
            }
 
+           /**
+            * 小項目選択時に呼ばれる
+            * レベルのリストを表示する
+            */
             self.selectShoList = function (data, event) {
                 self.levelArray.removeAll();
                 self.levelArray.push({inventoryCode: data.inventoryCode, level: 1, dispLevel: "1以上"}); 
@@ -90,10 +105,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 self.levelArray.push({inventoryCode: data.inventoryCode, level: 4, dispLevel: "4以上"}); 
             }
 
-            self.selectLevel = function(level) {
-                alert();
-            }
-
+            /**
+             * 配列から重複しているものを除いた配列を返す
+             * @param 重複しているかの判定をする項目
+             * @return 重複を排除した配列
+             */
             function distinctArray(array, item) {
                 var tempArray = new Array();
                 ko.utils.arrayForEach(array, function(r){
@@ -101,28 +117,6 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 })
                 return ko.utils.arrayGetDistinctValues(tempArray);
             }
-            // self.filteredallInventory = ko.computed(function () {
-            //     var filter = new Array();
-
-            //     if (self.allInventory().length !== 0) {
-            //         if (self.nameSearch().length === 0)
-            //         {
-            //             filter = self.allInventory();
-            //         } else {
-            //             ko.utils.arrayFilter(self.allInventory(),
-            //                     function (r) {
-            //                         var token = self.nameSearch().toLowerCase();
-            //                         if (r.shoName.toLowerCase().indexOf(token) >= 0) {
-            //                             filter.push(r);
-            //                         }
-            //                     });
-            //         }
-            //     }
-
-            //     self.ready(true);
-            //     return filter;
-            // });
-
         }
         return inventorySearchViewModel;
     }

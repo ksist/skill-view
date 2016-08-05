@@ -18,7 +18,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 });
             });
             
-
+            /**
+             * 資格の絞り込み
+             */
             self.filteredallExam = ko.computed(function () {
                 var examFilter = new Array();
 
@@ -28,12 +30,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         examFilter = self.allExam();
                     } else {
                         ko.utils.arrayFilter(self.allExam(),
-                                function (r) {
-                                    var token = self.nameSearch().toLowerCase();
-                                    if (r.examName.toLowerCase().indexOf(token) >= 0) {
-                                        examFilter.push(r);
-                                    }
-                                });
+                            function (r) {
+                                var token = self.nameSearch().toLowerCase();
+                                if (r.examName.toLowerCase().indexOf(token) >= 0) {
+                                    examFilter.push(r);
+                                }
+                            });
                     }
                 }
 

@@ -12,6 +12,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
 
             self.detailsContentTemplate = ko.observable('employeeDetails/exam');
 
+            /**
+             * 初期ロード時に呼ばれる
+             */
             self.handleActivated = function(info) {
                 var parentRouter = info.valueAccessor().params.ojRouter.parentRouter;
                 self.empRouter = parentRouter.currentState().value;
@@ -22,11 +25,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                         var data = stateId.toString();
                         state = new oj.RouterState(data, {
                             value: data,
-                            // For each state, before entering the state,
-                            // make sure the data for it is loaded.
                             canEnter: function () {
-                                // The state transition will be on hold
-                                // until loadData is resolved.
                                 return self.loadData(data);
                             }
                         });
@@ -36,6 +35,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                 return oj.Router.sync();
             };
 
+            /**
+             * 社員データの読み込み
+             */
             self.loadData = function (id) {
                 return new Promise(function (resolve, reject) {
                     var url = "js/test/employee" + id + ".json";
@@ -61,18 +63,34 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                 });
             };
 
+            /**
+             * スキルズインベントリの大項目のリスト設定
+             */
             self.daiSource = ko.computed(function() {
                 return new oj.ArrayTableDataSource(self.daiArray);
             });
 
+            /**
+             * スキルズインベントリの中項目のリスト設定
+             * 大項目選択時に呼ばれる
+             */
             self.chuSource = ko.computed(function() {
                 return new oj.ArrayTableDataSource(self.chuArray);
             });
 
+            /**
+             * スキルズインベントリの小項目のリスト設定
+             * 小項目選択時に呼ばれる
+             */
             self.shoSource = ko.computed(function() {
                 return new oj.ArrayTableDataSource(self.shoArray);
             });
 
+            /**
+             * 配列から重複しているものを除いた配列を返す
+             * 重複しているかを見る項目はitemで指定する
+             * @return 重複した項目を除いた後の配列
+             */
             function distinctArray(array, item) {
                 var tempArray = new Array();
                 ko.utils.arrayForEach(array, function(r){
@@ -81,6 +99,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                 return ko.utils.arrayGetDistinctValues(tempArray);
             }
             
+            /**
+             * スキルズインベントリの大項目選択時
+             */
             self.selectDaiList = function (daiName) {
                 self.chuArray.removeAll();
                 self.shoArray.removeAll();
@@ -106,6 +127,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                 });
             }
 
+            /**
+             * 中項目選択時
+             */
             self.selectChuList = function (chuName) {
                 self.shoArray.removeAll();
                 ko.utils.arrayFilter(self.allInventory,
@@ -116,12 +140,19 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                     })
            }
 
+           /**
+            * 社員詳細のタブ選択時
+            */
             self.tabClickHandler = function(data) {
                 var newPage = 'employeeDetails/' + data;
                 self.detailsContentTemplate(newPage);
                 return true;
             }
 
+            /**
+             * 業務経歴データを ojRowExpander に渡すために変換
+             * @return 変換後の配列
+             */
             function convertCareerArray(careers) {
                 var treeData = [];
                 careers.forEach(function(career, i) {
