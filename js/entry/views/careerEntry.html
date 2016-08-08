@@ -1,0 +1,168 @@
+<h1>業務経歴入力</h1>
+<div id="personaldetails" style="margin-bottom:26px;">
+    <div style="margin-top: 10px;" class="oj-flex">
+        <div class="oj-flex-item oj-sm-4 oj-md-1 oj-lg-1">
+            <label for="employeeCode" class="oj-label">社員番号</label>
+            <label for="employeeName" class="oj-label">社員名</label>
+            <label for="grade" class="oj-label">等格</label>
+        </div>
+        <div class="oj-flex-item oj-sm-8 oj-md-4 oj-lg-3">
+            <div id="employeeCode" class="oj-label" data-bind="text: employee.employeeCode"></div>
+            <div id="employeeName" class="oj-label" data-bind="text: employee.employeeName"></div>
+            <div id="grade" class="oj-label" data-bind="text: employee.grade"></div>
+        </div>
+        <div class="oj-flex-item oj-sm-4 oj-md-1 oj-lg-1">
+            <label for="belongName" class="oj-label">所属名</label>
+            <label for="jobTitle" class="oj-label">役職</label>
+        </div>
+        <div class="oj-flex-item oj-sm-8 oj-md-6 oj-lg-7">
+            <div id="belongName" class="oj-label" data-bind="text: employee.belongName"></div>
+            <div id="jobTitle" class="oj-label" data-bind="text: employee.jobTitle"></div>
+        </div>
+    </div>
+    <div id="categoryDetailsArea" class="oj-flex-item oj-sm-12 oj-lg-12">
+        <div class="oj-flex-item oj-sm-12">
+            <div class="oj-panel" style="height: 500px; margin-top: 10px;">
+                <div class="oj-form-layout" data-bind="template: 'career_form'"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="career_form" type="text/html">
+    <div class="oj-form oj-md-odd-cols-12 oj-sm-labels-nowrap oj-form-cols oj-flex ">  
+        <div class="oj-md-1">
+            <div class="oj-flex-item">
+                <lable for="startDate">開始日</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="startDate" data-bind="ojComponent: {component: 'ojInputText', 
+                	value: startDate,
+                    converter: dateConverter}"
+                    style="max-width: 70%"/>
+            </div>
+        </div>
+        <div class="oj-md-1">
+            <div class="oj-flex-item">
+                <lable for="endDate">終了日</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="endDate" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:endDate,
+                    converter: dateConverter}"
+                    style="max-width: 70%"/>
+            </div>
+        </div>
+        <div class="oj-md-1">
+            <div class="oj-flex-item">
+                <lable for="industryType">業種</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="industryType" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:industryType}"
+                    style="max-width: 70%"/>
+            </div>
+        </div>
+        <div class="oj-md-3">
+            <div class="oj-flex-item">
+                <lable for="workName">業務名</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="workName" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:workName}"/>
+            </div>
+        </div>
+        <div class="oj-md-2">
+            <div class="oj-flex-item">
+                <lable for="os">OS</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="os" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:os}"
+                    style="max-width: 90%"/>
+            </div>
+        </div>
+        <div class="oj-md-2">
+            <div class="oj-flex-item">
+                <lable for="language">言語</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="language" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:language}"
+                    style="max-width: 90%"/>
+            </div>
+        </div>
+        <div class="oj-md-2">
+            <div class="oj-flex-item">
+                <lable for="db">DB</lable>
+            </div>
+            <div class="oj-flex-item">
+                <input id="db" data-bind="ojComponent: {component: 'ojInputText', 
+                	value:db}"
+                    style="max-width: 90%"/>
+            </div>
+        </div>
+        <div class="oj-md-6">
+            <div class="oj-flex-item">
+                <lable for="workOutline">作業内容</lable>
+            </div>
+            <div class="oj-flex-item">
+                <textarea id="workOutline" data-bind="ojComponent: {component: 'ojTextArea', 
+                	value:workOutline,
+                    rootAttributes: {style: 'max-width: 98%'}}"
+                    style="height: 8em"/>
+            </div>
+        </div>
+        <div class="oj-md-6">
+            <div class="oj-flex">
+                <div class="oj-md-12">
+                    <div class="oj-flex-item">
+                        <lable for="phase">作業工程</lable>
+                    </div>
+                    <div class="oj-flex-item">
+                        <select id="phase" data-bind="ojComponent: {component: 'ojSelect',
+                            multiple: true, 
+                            value:phases}"
+                            style="max-width: 97%">
+                            <!-- ko foreach: phaseArray -->
+                            <option data-bind="value:value, text:value"></option>
+                            <!-- /ko -->
+                        </select>
+                    </div>
+                </div>
+                <div class="oj-md-4">
+                    <div class="oj-flex-item">
+                        <lable for="role">役割</lable>
+                    </div>
+                    <div class="oj-flex-item">
+                        <select id="role" data-bind="ojComponent: {component: 'ojSelect',
+                            multiple: false, 
+                            value:role}"
+                            style="max-width: 95%">
+                            <!-- ko foreach: roleArray -->
+                            <option data-bind="value:value, text:value"></option>
+                            <!-- /ko -->
+                        </select>
+                    </div>
+                </div>
+                <div class="oj-md-2">
+                    <div class="oj-flex-item">
+                        <lable for="projectCount">人数</lable>
+                    </div>
+                    <div class="oj-flex-item">
+                        <input id="projectCount" data-bind="ojComponent: {component: 'ojInputText', 
+                            value:projectCount}"
+                            style="max-width: 70%"/>
+                    </div>
+                </div>
+                <div class="oj-md-1"></div>
+                <div class="oj-md-1"></div>
+                <div class="oj-md-1" style="align-self: flex-end; padding-left: 20%">
+                    <button id="add" data-bind="click: addClick, 
+                        ojComponent: {component: 'ojButton', label: '追加'}">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
