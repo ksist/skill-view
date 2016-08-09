@@ -20,12 +20,25 @@
             <div id="jobTitle" class="oj-label" data-bind="text: employee.jobTitle"></div>
         </div>
     </div>
-    <div id="categoryDetailsArea" class="oj-flex-item oj-sm-12 oj-lg-12">
-        <div class="oj-flex-item oj-sm-12">
-            <div class="oj-panel" style="height: 500px; margin-top: 10px;">
-                <div class="oj-form-layout" data-bind="template: 'career_form'"></div>
-            </div>
-        </div>
+    <div class="oj-panel" style="height: 500px; margin-top: 10px;">
+        <div class="oj-form-layout" data-bind="template: 'career_form'"></div>
+        <hr>
+        <table data-bind="ojComponent: {component: 'ojTable', 
+                    data: careerData,
+                    columns: [
+                        {headerText: '期間'},
+                        {headerText: '業種'},
+                        {headerText: '業務名'},
+                        {headerText: 'OS'},
+                        {headerText: '言語'},
+                        {headerText: 'DB'},
+                        {headerText: ''}
+                    ],
+                    columnsDefault: {sortable: 'none'}, 
+                    rowTemplate: 'row_template',
+                    rootAttributes: {'style':'width: 100%; height: 280px'}
+                }">
+        </table>
     </div>
 </div>
 
@@ -36,9 +49,12 @@
                 <lable for="startDate">開始日</lable>
             </div>
             <div class="oj-flex-item">
-                <input id="startDate" data-bind="ojComponent: {component: 'ojInputText', 
+                <input id="startDate" required 
+                    data-bind="ojComponent: {component: 'ojInputText', 
                 	value: startDate,
-                    converter: dateConverter}"
+                    converter: dateConverter,
+                    validators: [],
+                    invalidComponentTracker: tracker}"
                     style="max-width: 70%"/>
             </div>
         </div>
@@ -47,9 +63,12 @@
                 <lable for="endDate">終了日</lable>
             </div>
             <div class="oj-flex-item">
-                <input id="endDate" data-bind="ojComponent: {component: 'ojInputText', 
+                <input id="endDate" required 
+                    data-bind="ojComponent: {component: 'ojInputText', 
                 	value:endDate,
-                    converter: dateConverter}"
+                    converter: dateConverter,
+                    validators: [],
+                    invalidComponentTracker: tracker}"
                     style="max-width: 70%"/>
             </div>
         </div>
@@ -110,16 +129,14 @@
                 <textarea id="workOutline" data-bind="ojComponent: {component: 'ojTextArea', 
                 	value:workOutline,
                     rootAttributes: {style: 'max-width: 98%'}}"
-                    style="height: 8em"/>
+                    style="height: 7em"/>
             </div>
         </div>
         <div class="oj-md-6">
-            <div class="oj-flex">
-                <div class="oj-md-12">
-                    <div class="oj-flex-item">
+            <table style="width: 100%;">
+                <tr>
+                    <td colspan="3">
                         <lable for="phase">作業工程</lable>
-                    </div>
-                    <div class="oj-flex-item">
                         <select id="phase" data-bind="ojComponent: {component: 'ojSelect',
                             multiple: true, 
                             value:phases}"
@@ -128,13 +145,20 @@
                             <option data-bind="value:value, text:value"></option>
                             <!-- /ko -->
                         </select>
-                    </div>
-                </div>
-                <div class="oj-md-4">
-                    <div class="oj-flex-item">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <lable for="role">役割</lable>
-                    </div>
-                    <div class="oj-flex-item">
+                    </td>
+                    <td>
+                        <lable for="projectCount">人数</lable>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="200">
                         <select id="role" data-bind="ojComponent: {component: 'ojSelect',
                             multiple: false, 
                             value:role}"
@@ -143,26 +167,87 @@
                             <option data-bind="value:value, text:value"></option>
                             <!-- /ko -->
                         </select>
-                    </div>
-                </div>
-                <div class="oj-md-2">
-                    <div class="oj-flex-item">
-                        <lable for="projectCount">人数</lable>
-                    </div>
-                    <div class="oj-flex-item">
+                    </td>
+                    <td>
                         <input id="projectCount" data-bind="ojComponent: {component: 'ojInputText', 
                             value:projectCount}"
-                            style="max-width: 70%"/>
-                    </div>
-                </div>
-                <div class="oj-md-1"></div>
-                <div class="oj-md-1"></div>
-                <div class="oj-md-1" style="align-self: flex-end; padding-left: 20%">
-                    <button id="add" data-bind="click: addClick, 
-                        ojComponent: {component: 'ojButton', label: '追加'}">
-                    </button>
-                </div>
-            </div>
+                            style="max-width: 30%"/>
+                    </td>
+                    <td align="right">
+                        <!-- ko if: buttonMode() == 'add' -->
+                        <button id="add" data-bind="click: addClick,    
+                            ojComponent: {component: 'ojButton', 
+                                label: '追加',
+                                disabled: shouldDisableAddButton()}">
+                        </button>
+                        <!-- /ko -->
+                        <!-- ko if: buttonMode() == 'update' -->
+                        <button id="upd" data-bind="click: updateClick, 
+                            ojComponent: {component: 'ojButton', 
+                                label: '更新',
+                                disabled: shouldDisableAddButton()}">
+                        </button>
+                        <!-- /ko -->
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
+    <div style="display:none" id="modalDialog" title="削除確認" 
+        data-bind="ojComponent:{component: 'ojDialog', initialVisibility: 'hide'}">
+        <div class="oj-dialog-body">
+            削除します。よろしいですか？
+        </div>
+        <div class="oj-dialog-footer">
+            <button id="okButton" data-bind="click: handleOKClose,
+                ojComponent: {component: 'ojButton', label: 'OK'}"> </button>
+            <button id="okButton" data-bind="click: handleCancelClose,
+                ojComponent: {component: 'ojButton', label: 'キャンセル'}"> </button>
+        </div>
+    </div>
+</script>
+<script id="row_template" type="text/html">
+    <tr>
+        <!-- ko if: $rowContext['depth'] == 1 -->
+        <td>
+            <div data-bind="ojComponent: {component: 'ojRowExpander', 
+                context: $rowContext}"></div>
+            <span data-bind="text: $parent.moment(startDate).format('YYYY/MM') 
+                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')"></span>
+        </td>
+        <td data-bind="text: industryType"></td>
+        <td data-bind="text: workName"></td>
+        <td data-bind="text: os"></td>
+        <td data-bind="text: language"></td>
+        <td data-bind="text: db"></td>
+        <td>
+            <button id="edit" data-bind="click: $parent.editClick, 
+                ojComponent: {component: 'ojButton', label: '編集'}">
+            </button>
+            <button id="del" data-bind="click: $parent.delClick, 
+                ojComponent: {component: 'ojButton', label: '削除'}">
+            </button>
+        </td>
+        <!-- /ko -->
+        <!-- ko if: $rowContext['depth'] == 2 -->
+        <td colspan="7" style="padding-left: 40px;">
+            <table style="width: 100%">
+                <tr>
+                    <th>作業内容</th>
+                    <th>役割</th>
+                    <th>人数</th>
+                    <th>作業工程</th>
+                </tr>
+                <tr>
+                    <td data-bind="text: workOutline"></td>
+                    <td data-bind="text: role"></td>
+                    <td data-bind="text: projectCount"></td>
+                    <td data-bind="foreach: phases">
+                    <span data-bind="text: phaseName"></span>　
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <!-- /ko -->
+    </tr>
 </script>

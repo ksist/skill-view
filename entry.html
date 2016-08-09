@@ -23,7 +23,7 @@
   ***************************** IMPORTANT INFORMATION ************************************ -->
 <html lang="ja-jp">
   <head>
-    <title>社員情報検索システム</title>
+    <title>社員情報登録システム</title>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="initial-scale=1.0"/>
@@ -33,7 +33,7 @@
 
     <link rel="stylesheet" href="bower_components/oraclejet/dist/css/alta/oj-alta-min.css" id="css" />
     <!-- This is where you would add any app specific styling -->
-    <link rel="stylesheet" href="css/override.css" type="text/css"/>      
+    <link rel="stylesheet" href="css/override.css" type="text/css"/>
   </head>
   <body>
     <div id="mainContent" class="oj-web-applayout-page">
@@ -47,7 +47,7 @@
                 chroming: 'half', menu: '#demoAppheaderGlobalNavMenuId'}">
               </button>
               <ul id="demoAppheaderGlobalNavMenuId" data-bind="ojComponent: {component: 'ojMenu', select: menuItemSelect}" style="display:none">
-                <li><a href="#">検索</a></li>
+                <li><a href="/">検索</a></li>
                 <li><a href="/entry.html">スキル入力</a></li>
               </ul>
             </div>
@@ -60,40 +60,20 @@
                             optionChange: $root.optionChangeHandler,
                             edge: 'top'}" >
           <ul class="oj-navigationlist-element">
-            <li id="search" data-bind="click: showHome()">
-              <a href="#">社員検索</a>
-            </li>
-            <li role="separator" class="oj-navigationlist-divider"></li>
-            <li id="examSearch" data-bind="click: showExam()">
-              <a href="#">資格検索</a>
-            </li>
-            <li role="separator" class="oj-navigationlist-divider"></li>
-            <li id="educationSearch" data-bind="click: showEducation()">
-              <a href="#">教育検索</a>
-            </li>
-            <li id="inventorySearch" data-bind="click: showInventory()">
-              <a href="#">スキル検索</a>
+            <li id="search">
+              <a href="#">業務経歴</a>
             </li>
           </ul>
         </div>
       </header>
       <!-- Main page content -->
       <div class="oj-web-applayout-content oj-web-applayout-max-width">
+        <div data-bind="text: test"></div>
         <div data-bind="ojModule: moduleConfig()"></div>
       </div>
 
-      <!--<div class="oj-web-applayout-content oj-web-applayout-max-width">
-        <div data-bind="ojModule: {name: 'employeeFromSkill', params: 'test'}"></div>
-      </div>-->
 
-      <!-- Footer content -->
-      <!--<footer role="contentinfo" class="oj-web-applayout-footer oj-flex oj-sm-align-items-flex-end">
-        <div class="oj-flex-item oj-text-secondary-color oj-text-sm oj-web-applayout-max-width"
-             data-bind="text: copyright"></div>
-      </footer>-->
-    </div>
-
-    <script type="text/javascript" data-main="js/main" src="bower_components/requirejs/require.js"></script>
+    <script type="text/javascript" data-main="js/entry/main" src="bower_components/requirejs/require.js"></script>
 
   </body>
 </html>
