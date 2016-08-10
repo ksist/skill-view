@@ -8,8 +8,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                 self.codeSearch = ko.observable('');
 
                 // 社員一覧の取得
-                // var url = 'http://localhost:8080/skill/exams';
-                var url = 'js/test/employees.json';
+                // var url = 'js/test/employees.json';
+                var url = 'http://172.16.9.99/rest/employees';
                 $.getJSON(url).then(function(employees) {
                     $.each(employees, function() {
                         self.allEmployee.push({

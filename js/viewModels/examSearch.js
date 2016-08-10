@@ -7,8 +7,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.ready = ko.observable(false);
             self.nameSearch = ko.observable('');
 
-            // var url = 'http://localhost:8080/skill/exams';
-            var url = 'js/test/exams.json';
+            // var url = 'js/test/exams.json';
+            var url = 'http://172.16.9.99/rest/exams';
             $.getJSON(url).then(function(exams) {
                 $.each(exams, function() {
                     self.allExam.push({
