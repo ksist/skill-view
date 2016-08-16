@@ -11,6 +11,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
             self.shoArray = ko.observableArray([]);
 
             self.detailsContentTemplate = ko.observable('employeeDetails/exam');
+            self.isLoading = ko.observable(true);
 
             /**
              * 初期ロード時に呼ばれる
@@ -60,6 +61,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                         console.log('Error: ' + error.message);
                         resolve(false);
                     });
+                    self.isLoading(false);
                 });
             };
 

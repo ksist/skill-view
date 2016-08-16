@@ -10,11 +10,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             self.chuArray = ko.observableArray([]);
             self.shoArray = ko.observableArray([]);
             self.levelArray = ko.observableArray([]);
+            self.isLoading = ko.observable(true);
 
             /**
              * スキルズインベントリデータの取得
              */
-            var url = 'js/test/inventories.json';
+            // var url = 'js/test/inventories.json';
+            var url = 'http://172.16.9.99/rest/inventories'
             $.getJSON(url).then(function(inventories) {
                 $.each(inventories, function() {
                     self.allInventory.push({
@@ -29,6 +31,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                         daiName: r
                     });
                 });
+                self.isLoading(false);
             });
 
             self.daiSource = ko.computed(function() {
@@ -99,10 +102,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             */
             self.selectShoList = function (data, event) {
                 self.levelArray.removeAll();
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 1, dispLevel: "1以上"}); 
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 2, dispLevel: "2以上"}); 
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 3, dispLevel: "3以上"}); 
                 self.levelArray.push({inventoryCode: data.inventoryCode, level: 4, dispLevel: "4以上"}); 
+                self.levelArray.push({inventoryCode: data.inventoryCode, level: 3, dispLevel: "3以上"}); 
+                self.levelArray.push({inventoryCode: data.inventoryCode, level: 2, dispLevel: "2以上"}); 
+                self.levelArray.push({inventoryCode: data.inventoryCode, level: 1, dispLevel: "1以上"}); 
             }
 
             /**

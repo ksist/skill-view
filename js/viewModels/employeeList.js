@@ -7,6 +7,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 self.nameSearch = ko.observable('');
                 self.codeSearch = ko.observable('');
                 self.condition = $params;
+                self.isLoading = ko.observable(true);
 
                 var url;
                 // 呼び出し元から渡されたパラメータの種類によってデータの取得元を変更
@@ -31,8 +32,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                             jobTitle: this.jobTitle
                         });
                     });
-                }).fail(function (error) {
-                    console.log('Error: ' + error.message);
+                    self.isLoading(false);
                 });
 
                 /**

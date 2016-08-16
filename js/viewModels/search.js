@@ -6,6 +6,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                 self.allEmployee = ko.observableArray([]);
                 self.nameSearch = ko.observable('');
                 self.codeSearch = ko.observable('');
+                self.isLoading = ko.observable(true);
 
                 // 社員一覧の取得
                 // var url = 'js/test/employees.json';
@@ -20,6 +21,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                             jobTitle: this.jobTitle
                         });
                     });
+                    self.isLoading(false);
                 });
                 
                 // 社員の絞り込み

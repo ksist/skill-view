@@ -1066,3 +1066,15 @@ html[dir="rtl"] .demo-oracle-icon {
     -webkit-transform:translate(-25%, -25%) scale(0.5);transform:translate(-25%, -25%) scale(0.5)
   }
 }
+
+#loading{
+    position: fixed;
+    top:50%;
+    left:40%;
+    z-index:10;
+    filter: alpha(opacity=85);
+    -moz-opacity:0.85;
+    opacity:0.85;
+    width:80px;
+    height:80px;
+}

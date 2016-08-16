@@ -6,6 +6,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.allExam = ko.observableArray([]);
             self.ready = ko.observable(false);
             self.nameSearch = ko.observable('');
+            self.isLoading = ko.observable(true);
 
             // var url = 'js/test/exams.json';
             var url = 'http://172.16.9.99/rest/exams';
@@ -16,6 +17,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         examGroup: this.examGroup
                     })
                 });
+                self.isLoading(false);
             });
             
             /**

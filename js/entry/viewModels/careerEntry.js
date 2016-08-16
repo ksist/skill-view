@@ -25,6 +25,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
             self.tracker = ko.observable();
 
             self.buttonMode = ko.observable("add");
+            self.isLoading = ko.observable(true);
 
             // テスト用（実際にはDBから取得する））
             self.phaseArray = [
@@ -101,6 +102,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                         console.log('Error: ' + error.message);
                         resolve(false);
                     });
+                    self.isLoading(false);
                 });
             };
 

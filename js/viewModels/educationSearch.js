@@ -6,6 +6,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.allExam = ko.observableArray([]);
             self.ready = ko.observable(false);
             self.nameSearch = ko.observable('');
+            self.isLoading = ko.observable(true);
 
             // 教育データの読み込み
             // var url = 'js/test/educations.json';
@@ -18,6 +19,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         institute: this.institute
                     });
                 });
+                self.isLoading(false);
             });
             
             /**
