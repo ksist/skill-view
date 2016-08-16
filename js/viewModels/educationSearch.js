@@ -19,6 +19,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         institute: this.institute
                     });
                 });
+            }).always(function() {
                 self.isLoading(false);
             });
             

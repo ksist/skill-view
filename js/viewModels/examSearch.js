@@ -17,6 +17,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                         examGroup: this.examGroup
                     })
                 });
+            }).always(function() {
                 self.isLoading(false);
             });
             

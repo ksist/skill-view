@@ -31,6 +31,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                         daiName: r
                     });
                 });
+            }).always(function() {
                 self.isLoading(false);
             });
 

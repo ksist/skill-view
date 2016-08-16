@@ -21,6 +21,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                             jobTitle: this.jobTitle
                         });
                     });
+                }).always(function() {
                     self.isLoading(false);
                 });
                 

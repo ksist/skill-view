@@ -31,7 +31,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                             grade: this.grade,
                             jobTitle: this.jobTitle
                         });
-                    });
+                    })
+                }).always(function() {
                     self.isLoading(false);
                 });
 
