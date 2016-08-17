@@ -188,11 +188,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 self.careers().forEach(function(career, i) {
                     if (career.attr.id === self.rowId) {
                         self.careers.splice(i, 1);
-                    } else {
-                        // RowExpander で使用している id をリセット
-                        delete self.careers()[i].attr.id;
-                        delete self.careers()[i].children[0].attr.id;
                     }
+                    // RowExpander で使用している id をリセット
+                    delete self.careers()[i].attr.id;
+                    delete self.careers()[i].children[0].attr.id;
                 });
                 var options = [];
                 self.careerData(new oj.FlattenedTreeTableDataSource(
