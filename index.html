@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="css/override.css" type="text/css"/>      
   </head>
   <body>
-    <div id="mainContent" class="oj-web-applayout-page">
+    <div id="mainContent">
       <!-- Header content -->
       <header role="banner" class="oj-web-applayout-header">
         <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center" style="height: 3.14rem">
@@ -63,11 +63,9 @@
             <li id="search" data-bind="click: showHome()">
               <a href="#">社員検索</a>
             </li>
-            <li role="separator" class="oj-navigationlist-divider"></li>
             <li id="examSearch" data-bind="click: showExam()">
               <a href="#">資格検索</a>
             </li>
-            <li role="separator" class="oj-navigationlist-divider"></li>
             <li id="educationSearch" data-bind="click: showEducation()">
               <a href="#">教育検索</a>
             </li>
@@ -81,10 +79,6 @@
       <div class="oj-web-applayout-content oj-web-applayout-max-width">
         <div data-bind="ojModule: moduleConfig()"></div>
       </div>
-
-      <!--<div class="oj-web-applayout-content oj-web-applayout-max-width">
-        <div data-bind="ojModule: {name: 'employeeFromSkill', params: 'test'}"></div>
-      </div>-->
 
       <!-- Footer content -->
       <!--<footer role="contentinfo" class="oj-web-applayout-footer oj-flex oj-sm-align-items-flex-end">
