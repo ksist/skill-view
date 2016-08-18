@@ -13,9 +13,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 // 呼び出し元から渡されたパラメータの種類によってデータの取得元を変更
                 if (self.condition.examName) {
                     // url = "js/test/employee" + self.condition.examName + ".json";
-                    var url = 'http://172.16.9.99/rest/employees/exams/' + self.condition.examName;
+                    var url = 'http://172.16.9.99/rest/employees/exam/' + self.condition.examName;
                 } else if (self.condition.educationCode) {
-                    url = "js/test/employeeedu" + self.condition.educationCode + ".json";
+                    // url = "js/test/employeeedu" + self.condition.educationCode + ".json";
+                    var url = 'http://172.16.9.99/rest/employees/education/' + self.condition.educationCode;
                 } else if (self.condition.inventoryCode) {
                     url = "js/test/employeeskill" + self.condition.inventoryCode + "level" + self.condition.level + ".json";
                 }
