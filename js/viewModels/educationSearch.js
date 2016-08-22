@@ -9,8 +9,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.isLoading = ko.observable(true);
 
             // 教育データの読み込み
-            var url = 'js/test/educations.json';
-            // var url = 'http://172.16.9.99/rest/educations';
+            // var url = 'js/test/educations.json';
+            var url = 'http://172.16.9.99/rest/educations';
             $.getJSON(url).then(function(educations) {
                 $.each(educations, function() {
                     self.allExam.push({
