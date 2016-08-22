@@ -7,6 +7,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 self.nameSearch = ko.observable('');
                 self.codeSearch = ko.observable('');
                 self.condition = $params;
+                self.searchCondition = ko.observable('');
                 self.isLoading = ko.observable(true);
 
                 var url;
@@ -14,11 +15,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 if (self.condition.examName) {
                     // url = "js/test/employee" + self.condition.examName + ".json";
                     var url = 'http://172.16.9.99/rest/employees/exam/' + self.condition.examName;
-                } else if (self.condition.educationCode) {
+                    self.searchCondition = '資格名： ' + self.condition.examName;
+                } else if (self.condition.educationName) {
                     // url = "js/test/employeeedu" + self.condition.educationCode + ".json";
-                    var url = 'http://172.16.9.99/rest/employees/education/' + self.condition.educationCode;
+                    var url = 'http://172.16.9.99/rest/employees/education/' + self.condition.educationName;
+                    self.searchCondition = '教育名： ' + self.condition.educationName;
                 } else if (self.condition.inventoryCode) {
                     url = "js/test/employeeskill" + self.condition.inventoryCode + "level" + self.condition.level + ".json";
+                    self.searchCondition = 'スキル： ' + self.condition.shoName + ' レベル' + self.condition.dispLevel;
                 }
 
                 // データを配列にセットする前に全削除

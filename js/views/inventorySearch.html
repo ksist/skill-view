@@ -41,12 +41,12 @@
 </div>
 
 <script id="dai_template" type="text/html">
-    <li data-bind="click: function(data, event){$parent.selectDaiList($data.daiName)}">
+    <li data-bind="click: function(data, event){$parent.selectDaiList(data.daiName)}">
         <div data-bind="text: $data.daiName"></div>
     </li>
 </script>
 <script id="chu_template" type="text/html">
-    <li data-bind="click: function(data, event){$parent.selectChuList($data.chuName)}">
+    <li data-bind="click: function(data, event){$parent.selectChuList(data.chuName)}">
         <div data-bind="text: $data.chuName"></div>
     </li>
 </script><script id="sho_template" type="text/html">

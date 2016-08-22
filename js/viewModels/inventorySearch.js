@@ -103,10 +103,25 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             */
             self.selectShoList = function (data, event) {
                 self.levelArray.removeAll();
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 4, dispLevel: "4以上"}); 
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 3, dispLevel: "3以上"}); 
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 2, dispLevel: "2以上"}); 
-                self.levelArray.push({inventoryCode: data.inventoryCode, level: 1, dispLevel: "1以上"}); 
+                self.levelArray.push({
+                    inventoryCode: data.inventoryCode, 
+                    shoName: data.shoName, 
+                    level: 4, dispLevel: "4以上"
+                }); 
+                self.levelArray.push({
+                    inventoryCode: data.inventoryCode, 
+                    shoName: data.shoName, 
+                    level: 3, dispLevel: "3以上"}); 
+                self.levelArray.push({
+                    inventoryCode: data.inventoryCode, 
+                    shoName: data.shoName, 
+                    level: 2, dispLevel: "2以上"
+                }); 
+                self.levelArray.push({
+                    inventoryCode: data.inventoryCode, 
+                    shoName: data.shoName, 
+                    level: 1, dispLevel: "1以上"
+                }); 
             }
 
             /**
