@@ -19,6 +19,7 @@
         <table id="listview"
             data-bind="ojComponent: {component: 'ojTable',
             data: dataSource,
+            columnsDefault: {sortable: 'none'}, 
             columns: [{headerText: '社員番号'},
                         {headerText: '社員名'},
                         {headerText: '所属名'}],

@@ -21,7 +21,8 @@
             <div data-bind="ojComponent: {component: 'ojRowExpander', 
                 context: $rowContext}"></div>
             <span data-bind="text: $parent.moment(startDate).format('YYYY/MM') 
-                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')"></span>
+                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')
+                + ' (' + term + ')'"></span>
         </td>
         <td data-bind="text: industryType"></td>
         <td data-bind="text: workName"></td>

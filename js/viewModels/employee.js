@@ -162,6 +162,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                     tempCareer.attr.industryType = career.industryType;
                     tempCareer.attr.startDate = career.startDate;
                     tempCareer.attr.endDate = career.endDate;
+                    tempCareer.attr.term = compareDate(new Date(career.startDate), new Date(career.endDate)) ;
                     tempCareer.attr.workName = career.workName;
                     tempCareer.attr.os = career.os;
                     tempCareer.attr.language = career.language;
@@ -173,6 +174,25 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                     treeData.push(tempCareer);
                 })
                 return treeData;
+            }
+
+            /**
+             * 日付の差分を月単位で返す
+             * @param {Date} startDate
+             * @param {Date} endDate
+             * @return ○年○ヶ月
+             */
+            function compareDate(startDate, endDate) {
+                var year = endDate.getYear() - startDate.getYear();
+                var month = endDate.getMonth() - startDate.getMonth();
+                var termMonth = year * 12 + month + 1;
+                var termYear = Math.floor(termMonth / 12);
+                var term = '';
+                if (termYear > 0) {
+                    term = termYear + '年';
+                }
+                term = term  + termMonth % 12 + 'ヶ月' 
+                return term;
             }
 
         }

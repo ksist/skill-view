@@ -717,7 +717,7 @@
       "startDate": "2013-07-01",
       "endDate": "2016-01-01",
       "workName": "県警システムサポート",
-      "workOutline": "県警免許システムにおけるパッケージの改修、及びシステム構築等（一部、民間企業におけるシステム構築）",
+      "workOutline": "県警免許システムにおけるパッケージの改修",
       "projectCount": "3",
       "os": "Windows Server 2012、ACOS-4",
       "language": "COBOL/S",
