@@ -15,8 +15,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             /**
              * スキルズインベントリデータの取得
              */
-            var url = 'js/test/inventories.json';
-            // var url = 'http://172.16.9.99/rest/inventories'
+            // var url = 'js/test/inventories.json';
+            var url = 'http://172.16.9.99/rest/inventories'
             $.getJSON(url).then(function(inventories) {
                 $.each(inventories, function() {
                     self.allInventory.push({
@@ -65,7 +65,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                     shoName: ""
                     });
                 self.levelArray.removeAll();
-                self.levelArray.push({inventoryCode: "", level: "", dispLevel: ""});
+                self.levelArray.push({inventoryCode: "", shoName: "", level: "", dispLevel: ""});
                 var filteredArray = new Array();
                 ko.utils.arrayFilter(self.allInventory(),
                     function (r) {
@@ -88,7 +88,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             self.selectChuList = function (chuName) {
                 self.shoArray.removeAll();
                 self.levelArray.removeAll();
-                self.levelArray.push({inventoryCode: "", level: "", dispLevel: ""});
+                self.levelArray.push({inventoryCode: "", shoName: "", level: "", dispLevel: ""});
                 ko.utils.arrayFilter(self.allInventory(),
                     function (r) {
                         if (r.chuName === chuName) {

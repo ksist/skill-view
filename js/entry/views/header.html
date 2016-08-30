@@ -1,0 +1,26 @@
+<div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center" style="height: 3.14rem">
+    <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: titleLabel"></span>
+    <div class="oj-flex-bar-end">
+      <button id="userMenu" class
+        data-bind="ojComponent: {component: 'ojButton', label: 'メニュー',
+        chroming: 'half', menu: '#demoAppheaderGlobalNavMenuId'}">
+      </button>
+      <ul id="demoAppheaderGlobalNavMenuId" data-bind="ojComponent: {component: 'ojMenu', select: menuItemSelect}" style="display:none">
+        <li><a href="/">社員一覧</a></li>
+        <li><a href="/entry.html">業務経歴入力</a></li>
+      </ul>
+    </div>
+</div>
+<div class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-lg-justify-content-flex-end oj-md-justify-content-flex-end"
+    data-bind="ojComponent:{
+                    drillMode: 'none',
+                    component: 'ojNavigationList',
+                    selection: $root.router.stateId(),
+                    optionChange: $root.optionChangeHandler,
+                    edge: 'top'}" >
+  <ul class="oj-navigationlist-element">
+    <li id="search">
+      <a href="#">業務経歴</a>
+    </li>
+  </ul>
+</div>

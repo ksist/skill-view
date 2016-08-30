@@ -3,29 +3,13 @@
  Copyright (c) 2014, 2016, Oracle and/or its affiliates.
  The Universal Permissive License (UPL), Version 1.0
  -->
-
-<!-- ************************ IMPORTANT INFORMATION ************************************
-        This blank template contains a basic web application setup with a header and sticky footer.
-        It contains the Oracle JET framework and a default requireJS
-        configuration file to show how JET can be setup in a common application.
-        This project template can be used in conjunction with demo code from the JET
-        website to test JET component behavior and interactions.
-
-  Any CSS styling with the prefix "demo-" is for demonstration only and is not
-  provided as part of the JET framework.
-
-  Best practice patterns are provided as part of the JET website under the Samples section.
-
-  Aria Landmark role attributes are added to the different sections of the application
-  for accessibility compliance. If you change the type of content for a specific
-  section from what is defined, you should also change the role value for that
-  section to represent the appropriate content type.
-  ***************************** IMPORTANT INFORMATION ************************************ -->
 <html lang="ja-jp">
   <head>
-    <title>社員情報登録システム</title>
+    <title>スキル可視化</title>
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
     <meta name="viewport" content="initial-scale=1.0"/>
     <link rel="icon" type="image/x-icon" href="css/images/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="css/images/touchicon.png">
@@ -36,42 +20,16 @@
     <link rel="stylesheet" href="css/override.css" type="text/css"/>
   </head>
   <body>
-    <div id="mainContent" class="oj-web-applayout-page">
+    <div id="mainContent">
       <!-- Header content -->
       <header role="banner" class="oj-web-applayout-header">
-        <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center" style="height: 3.14rem">
-            <span class="oj-web-applayout-header-title" title="Application Name" data-bind="text: titleLabel"></span>
-            <div class="oj-flex-bar-end">
-              <button id="userMenu" class
-                data-bind="ojComponent: {component: 'ojButton', label: 'メニュー',
-                chroming: 'half', menu: '#demoAppheaderGlobalNavMenuId'}">
-              </button>
-              <ul id="demoAppheaderGlobalNavMenuId" data-bind="ojComponent: {component: 'ojMenu', select: menuItemSelect}" style="display:none">
-                <li><a href="/">検索</a></li>
-                <li><a href="/entry.html">スキル入力</a></li>
-              </ul>
-            </div>
-        </div>
-        <div class="oj-web-applayout-navbar oj-sm-only-hide oj-web-applayout-max-width oj-navigationlist-item-dividers oj-md-condense oj-lg-justify-content-flex-end oj-md-justify-content-flex-end"
-            data-bind="ojComponent:{
-                            drillMode: 'none',
-                            component: 'ojNavigationList',
-                            selection: $root.router.stateId(),
-                            optionChange: $root.optionChangeHandler,
-                            edge: 'top'}" >
-          <ul class="oj-navigationlist-element">
-            <li id="search">
-              <a href="#">業務経歴</a>
-            </li>
-          </ul>
-        </div>
+        <div data-bind="ojModule: 'header'"></div>
       </header>
       <!-- Main page content -->
       <div class="oj-web-applayout-content oj-web-applayout-max-width">
-        <div data-bind="text: test"></div>
         <div data-bind="ojModule: moduleConfig()"></div>
       </div>
-
+    </div>
 
     <script type="text/javascript" data-main="js/entry/main" src="bower_components/requirejs/require.js"></script>
 

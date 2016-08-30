@@ -55,20 +55,12 @@ require(["ojs/ojcore",
 
         function MainViewModel() {
             var self = this;
-            self.titleLabel = ko.observable("スキル可視化");
-            self.copyright = ko.observable("Copyright © 2016, NCS&A Co., Ltd.");
-            self.params = ko.observable();
-            self.test = ko.observable();
-
-            self.menuItemSelect = function(event, ui) {
-                window.location.href = ui.item.children("a")[0].href;
-            }
 
             // URLルールティングの設定
             var router = oj.Router.rootInstance;
             router.configure({
-                'search': {label: '社員検索', isDefault: true},
-                'careerEntry': {label:'社員情報',
+                'search': {label: '業務経歴入力', isDefault: true},
+                'careerEntry': {label:'業務経歴入力',
                     enter: function() {
                         var childRouter = router.createChildRouter('emp');
                         router.currentState().value = childRouter;
