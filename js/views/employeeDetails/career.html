@@ -32,22 +32,22 @@
         <!-- /ko -->
         <!-- ko if: $rowContext['depth'] == 2 -->
         <td colspan="6" style="padding-left: 40px;">
-            <table style="width: 100%">
-                <tr>
-                    <th>作業内容</th>
-                    <th>役割</th>
-                    <th>人数</th>
-                    <th>作業工程</th>
-                </tr>
-                <tr>
-                    <td data-bind="text: workOutline"></td>
-                    <td data-bind="text: role"></td>
-                    <td data-bind="text: projectCount"></td>
-                    <td data-bind="foreach: phases">
-                    <span data-bind="text: phaseName"></span>　
-                    </td>
-                </tr>
-            </table>
+            <div calss="oj-flex-items-pad" style="max-width: 100%; white-space:normal">
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-md-6">作業内容</div>
+                    <div class="oj-flex-item oj-md-2">役割</div>
+                    <div class="oj-flex-item oj-md-1">人数</div>
+                    <div class="oj-flex-item oj-md-3">作業工程</div>
+                </div>
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-md-6" data-bind="text: workOutline"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: role"></div>
+                    <div class="oj-flex-item oj-md-1" data-bind="text: projectCount"></div>
+                    <div class="oj-flex-item oj-md-3" data-bind="foreach: phases">
+                        <span data-bind="text: phaseName"></span>
+                    </div>
+                </div>
+            </div>
         </td>
         <!-- /ko -->
     </tr>
