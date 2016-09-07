@@ -164,9 +164,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                     tempCareer.attr.endDate = career.endDate;
                     tempCareer.attr.term = compareDate(new Date(career.startDate), new Date(career.endDate)) ;
                     tempCareer.attr.workName = career.workName;
-                    tempCareer.attr.os = career.os;
-                    tempCareer.attr.language = career.language;
-                    tempCareer.attr.db = career.db;
+                    tempCareer.attr.role = career.role;
+                    tempCareer.children[0].attr.model = career.model;
+                    tempCareer.children[0].attr.os = career.os;
+                    tempCareer.children[0].attr.language = career.language;
+                    tempCareer.children[0].attr.db = career.db;
+                    tempCareer.children[0].attr.other = career.other;
                     tempCareer.children[0].attr.workOutline = career.workOutline;
                     tempCareer.children[0].attr.projectCount = career.projectCount;
                     tempCareer.children[0].attr.role = career.role;

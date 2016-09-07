@@ -719,9 +719,11 @@
       "workName": "○○システムサポート",
       "workOutline": "○○システムにおけるパッケージの改修",
       "projectCount": "3",
+      "model": "Express5800、i-PX9000、i-PX9800",
       "os": "Windows Server 2012、ACOS-4",
       "language": "COBOL/S",
       "db": "RIQS",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "4.詳細設計"},
@@ -739,9 +741,11 @@
       "workName": "○○システムサポート",
       "workOutline": "○○オンラインシステム、及びホストシステム運用支援",
       "projectCount": "5",
+      "model": "Express5800、i-PX9000",
       "os": "Windows Server 2003、ACOS-4 VX",
       "language": "COBOL/S",
       "db": "RIQS",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "10.ｼｽﾃﾑ運用・保守"}
@@ -754,9 +758,11 @@
       "workName": "○○システム",
       "workOutline": "○○システム\r\n障害管理・構成管理",
       "projectCount": "3",
+      "model": "",
       "os": "",
       "language": "",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "20.その他"}
@@ -769,9 +775,11 @@
       "workName": "○○システム",
       "workOutline": "○○システム\r\n品質管理・分析サポート",
       "projectCount": "2",
+      "model": "",
       "os": "",
       "language": "",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "19.品質分析・PMO"}
@@ -784,10 +792,12 @@
       "workName": "○○システムサポート",
       "workOutline": "○○オンラインシステム、ホストシステム、及び端末運用支援",
       "projectCount": "5",
+      "model": "Express5800、i-PX9000",
       "os": "Windows Server 2003、ACOS-4 VX",
       "language": "COBOL/S",
       "db": "RIQS",
       "role": "メンバー",
+      "other": "",
       "phases": [
         {"phaseName": "10.ｼｽﾃﾑ運用・保守"},
         {"phaseName": "15.ｻｰﾊﾞ運用・保守"}
@@ -800,9 +810,11 @@
       "workName": "○○運用保守支援",
       "workOutline": "○○業運用保守支援",
       "projectCount": "5",
+      "model": "ACOS-4",
       "os": "ACOS-4/VX",
       "language": "",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "20.その他"}
@@ -815,9 +827,11 @@
       "workName": "○○システム構築支援",
       "workOutline": "○○システムにおけるマイグレーション支援（データ移行用プログラムの詳細設計）",
       "projectCount": "6",
+      "model": "",
       "os": "",
       "language": "JAVA",
       "db": "Oracle",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "4.詳細設計"}
@@ -830,9 +844,11 @@
       "workName": "○○システムサポート",
       "workOutline": "○○オンラインシステム、ホストシステム、及び端末運用支援",
       "projectCount": "2",
+      "model": "Express5800、i-PX9000",
       "os": "Windows Server 2003、ACOS-4 VX",
       "language": "COBOL/S",
       "db": "RIQS",
+      "other": "",
       "role": "プロジェクトリーダー",
       "phases": [
         {"phaseName": "1.調査分析・要件定義"},
@@ -854,9 +870,11 @@
       "workName": "○○業務",
       "workOutline": "○○再構築\r\n外部設計～結合テスト",
       "projectCount": "20",
+      "model": "IBM汎用機",
       "os": "Z/OS",
       "language": "COBOL",
       "db": "DB2",
+      "other": "",
       "role": "サブリーダー",
       "phases": [
         {"phaseName": "3.機能設計"},
@@ -874,9 +892,11 @@
       "workName": "○○業務",
       "workOutline": "○○業システム開発サポート",
       "projectCount": "10",
+      "model":"富士通汎用機",
       "os": "OS/Ⅳ",
       "language": "YPS-COBOL",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "3.機能設計"},
@@ -894,9 +914,11 @@
       "workName": "○○講習受講",
       "workOutline": "○○会社おける○○業務、及びシステム講習会受講",
       "projectCount": "1",
+      "model": "",
       "os": "",
       "language": "",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": []
     },
@@ -907,9 +929,11 @@
       "workName": "○○業○○システム開発",
       "workOutline": "○○業における○○システムの開発",
       "projectCount": "3",
+      "model": "HP社サーバ",
       "os": "HP-UNIX",
       "language": "JAVA、C",
       "db": "",
+      "other": "",
       "role": "メンバー",
       "phases": [
         {"phaseName": "3.機能設計"}

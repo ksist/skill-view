@@ -5,9 +5,7 @@
                 {headerText: '期間'},
                 {headerText: '業種'},
                 {headerText: '業務名'},
-                {headerText: 'OS'},
-                {headerText: '言語'},
-                {headerText: 'DB'}
+                {headerText: '役割'},
             ],
             rowTemplate: 'row_template',
             rootAttributes: {'style':'width: 100%; height: 400px'}
@@ -26,24 +24,34 @@
         </td>
         <td data-bind="text: industryType"></td>
         <td data-bind="text: workName"></td>
-        <td data-bind="text: os"></td>
-        <td data-bind="text: language"></td>
-        <td data-bind="text: db"></td>
+        <td data-bind="text: role"></td>
         <!-- /ko -->
         <!-- ko if: $rowContext['depth'] == 2 -->
-        <td colspan="6" style="padding-left: 40px;">
+        <td colspan="7" style="padding-left: 40px;">
             <div calss="oj-flex-items-pad" style="max-width: 100%; white-space:normal">
-                <div class="oj-flex">
-                    <div class="oj-flex-item oj-md-5">作業内容</div>
-                    <div class="oj-flex-item oj-md-2">役割</div>
-                    <div class="oj-flex-item oj-md-1">人数</div>
-                    <div class="oj-flex-item oj-md-4">作業工程</div>
+                <div class="oj-flex" style="font-weight:bold">
+                    <div class="oj-flex-item oj-md-2">機種</div>
+                    <div class="oj-flex-item oj-md-2">OS</div>
+                    <div class="oj-flex-item oj-md-2">言語</div>
+                    <div class="oj-flex-item oj-md-2">DB</div>
+                    <div class="oj-flex-item oj-md-2">その他ソフト    </div>
+                    <div class="oj-flex-item oj-md-2">人数</div>
                 </div>
                 <div class="oj-flex">
-                    <div class="oj-flex-item oj-md-5" data-bind="text: workOutline"></div>
-                    <div class="oj-flex-item oj-md-2" data-bind="text: role"></div>
-                    <div class="oj-flex-item oj-md-1" data-bind="text: projectCount"></div>
-                    <div class="oj-flex-item oj-md-4" data-bind="foreach: phases">
+                    <div class="oj-flex-item oj-md-2" data-bind="text: model"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: os"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: language"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: db"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: other"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: projectCount"></div>
+                </div>
+                <div class="oj-flex" style="font-weight:bold">
+                    <div class="oj-flex-item oj-md-6">作業内容</div>
+                    <div class="oj-flex-item oj-md-6">作業工程</div>
+                </div>
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-md-6" data-bind="text: workOutline"></div>
+                    <div class="oj-flex-item oj-md-6" data-bind="foreach: phases">
                         <span data-bind="text: phaseName"></span>
                     </div>
                 </div>

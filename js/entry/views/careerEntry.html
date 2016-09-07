@@ -30,9 +30,7 @@
                         {headerText: '期間'},
                         {headerText: '業種'},
                         {headerText: '業務名'},
-                        {headerText: 'OS'},
-                        {headerText: '言語'},
-                        {headerText: 'DB'},
+                        {headerText: '役割'},
                         {headerText: ''}
                     ],
                     columnsDefault: {sortable: 'none'}, 
@@ -45,153 +43,122 @@
 
 <script id="career_form" type="text/html">
     <div class="oj-form oj-md-odd-cols-12 oj-sm-labels-nowrap oj-form-cols oj-flex ">  
-        <div class="oj-md-1">
-            <div class="oj-flex-item">
-                <lable for="startDate">開始日</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="startDate" required 
-                    data-bind="ojComponent: {component: 'ojInputText', 
-                	value: startDate,
-                    converter: dateConverter,
-                    validators: [],
-                    invalidComponentTracker: tracker}"
-                    style="max-width: 70%"/>
-            </div>
+        <div class="oj-flex-item oj-md-1">
+            <lable for="startDate">開始日</lable>  
+            <input id="startDate" required 
+                data-bind="ojComponent: {component: 'ojInputText', 
+                value: startDate,
+                converter: dateConverter,
+                validators: [],
+                invalidComponentTracker: tracker,
+                messagesCustom: startDateMessage}"
+                style="max-width: 70%"/>
         </div>
-        <div class="oj-md-1">
-            <div class="oj-flex-item">
-                <lable for="endDate">終了日</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="endDate" required 
-                    data-bind="ojComponent: {component: 'ojInputText', 
-                	value:endDate,
-                    converter: dateConverter,
-                    validators: [],
-                    invalidComponentTracker: tracker}"
-                    style="max-width: 70%"/>
-            </div>
+        <div class="oj-flex-item oj-md-1">
+            <lable for="endDate">終了日</lable>
+            <input id="endDate" required 
+                data-bind="ojComponent: {component: 'ojInputText', 
+                value:endDate,
+                converter: dateConverter,
+                validators: [],
+                invalidComponentTracker: tracker},
+                event: {change: endDateChange}"
+                style="max-width: 70%"/>
         </div>
-        <div class="oj-md-1">
-            <div class="oj-flex-item">
-                <lable for="industryType">業種</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="industryType" data-bind="ojComponent: {component: 'ojInputText', 
-                	value:industryType}"
-                    style="max-width: 70%"/>
-            </div>
+        <div class="oj-flex-item oj-md-1">
+            <lable for="industryType">業種</lable>
+            <input id="industryType" data-bind="ojComponent: {component: 'ojInputText', 
+                value:industryType}"
+                style="max-width: 70%"/>
         </div>
-        <div class="oj-md-3">
-            <div class="oj-flex-item">
-                <lable for="workName">業務名</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="workName" data-bind="ojComponent: {component: 'ojInputText', 
-                	value:workName}"/>
-            </div>
+        <div class="oj-flex-item oj-md-3">
+            <lable for="workName">業務名</lable></br>
+            <input id="workName" data-bind="ojComponent: {component: 'ojInputText', 
+                value:workName}"/>
         </div>
-        <div class="oj-md-2">
-            <div class="oj-flex-item">
-                <lable for="os">OS</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="os" data-bind="ojComponent: {component: 'ojInputText', 
-                	value:os}"
-                    style="max-width: 90%"/>
-            </div>
+        <div class="oj-flex-item oj-md-6">
+            <lable for="phase">作業工程</lable>
+            <select id="phase" data-bind="ojComponent: {component: 'ojSelect',
+                multiple: true, 
+                value:phases}"
+                style="max-width: 97%">
+                <!-- ko foreach: phaseArray -->
+                <option data-bind="value:value, text:value"></option>
+                <!-- /ko -->
+            </select>
         </div>
-        <div class="oj-md-2">
-            <div class="oj-flex-item">
-                <lable for="language">言語</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="language" data-bind="ojComponent: {component: 'ojInputText', 
-                	value:language}"
-                    style="max-width: 90%"/>
-            </div>
+        <div class="oj-flex-item oj-md-2">
+            <lable for="model">機種</lable>
+            <input id="model" data-bind="ojComponent: {component: 'ojInputText', 
+                value:model}"
+                style="max-width: 90%"/>
         </div>
-        <div class="oj-md-2">
-            <div class="oj-flex-item">
-                <lable for="db">DB</lable>
-            </div>
-            <div class="oj-flex-item">
-                <input id="db" data-bind="ojComponent: {component: 'ojInputText', 
-                	value:db}"
-                    style="max-width: 90%"/>
-            </div>
+        <div class="oj-flex-item oj-md-2">
+            <lable for="os">OS</lable>
+            <input id="os" data-bind="ojComponent: {component: 'ojInputText', 
+                value:os}"
+                style="max-width: 90%"/>
         </div>
+        <div class="oj-flex-item oj-md-2">
+            <lable for="language">言語</lable>
+            <input id="language" data-bind="ojComponent: {component: 'ojInputText', 
+                value:language}"
+                style="max-width: 90%"/>
+        </div>
+        <div class="oj-flex-item oj-md-2">
+            <lable for="db">DB</lable>
+            <input id="db" data-bind="ojComponent: {component: 'ojInputText', 
+                value:db}"
+                style="max-width: 90%"/>
+        </div>
+        <div class="oj-flex-item oj-md-2">
+            <lable for="other">その他ソフト</lable>
+            <input id="other" data-bind="ojComponent: {component: 'ojInputText', 
+                value:other}"
+                style="max-width: 90%"/>
+        </div>
+        <div class="oj-flex-item oj-md-2"></div>
         <div class="oj-md-6">
-            <div class="oj-flex-item">
-                <lable for="workOutline">作業内容</lable>
-            </div>
-            <div class="oj-flex-item">
-                <textarea id="workOutline" data-bind="ojComponent: {component: 'ojTextArea', 
-                	value:workOutline,
-                    rootAttributes: {style: 'max-width: 98%'}}"
-                    style="height: 7em"/>
-            </div>
+            <lable for="workOutline">作業内容</lable>
+            <textarea id="workOutline" data-bind="ojComponent: {component: 'ojTextArea', 
+                value:workOutline,
+                rootAttributes: {style: 'max-width: 98%'}}"/>
         </div>
-        <div class="oj-md-6">
-            <table style="width: 100%;">
-                <tr>
-                    <td colspan="3">
-                        <lable for="phase">作業工程</lable>
-                        <select id="phase" data-bind="ojComponent: {component: 'ojSelect',
-                            multiple: true, 
-                            value:phases}"
-                            style="max-width: 97%">
-                            <!-- ko foreach: phaseArray -->
-                            <option data-bind="value:value, text:value"></option>
-                            <!-- /ko -->
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <lable for="role">役割</lable>
-                    </td>
-                    <td>
-                        <lable for="projectCount">人数</lable>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="200">
-                        <select id="role" data-bind="ojComponent: {component: 'ojSelect',
-                            multiple: false, 
-                            value:role}"
-                            style="max-width: 95%">
-                            <!-- ko foreach: roleArray -->
-                            <option data-bind="value:value, text:value"></option>
-                            <!-- /ko -->
-                        </select>
-                    </td>
-                    <td>
-                        <input id="projectCount" data-bind="ojComponent: {component: 'ojInputText', 
-                            value:projectCount}"
-                            style="max-width: 30%"/>
-                    </td>
-                    <td align="right">
-                        <!-- ko if: buttonMode() == 'add' -->
-                        <button id="add" data-bind="click: addClick,    
-                            ojComponent: {component: 'ojButton', 
-                                label: '追加',
-                                disabled: shouldDisableAddButton()}">
-                        </button>
-                        <!-- /ko -->
-                        <!-- ko if: buttonMode() == 'update' -->
-                        <button id="upd" data-bind="click: updateClick, 
-                            ojComponent: {component: 'ojButton', 
-                                label: '更新',
-                                disabled: shouldDisableAddButton()}">
-                        </button>
-                        <!-- /ko -->
-                    </td>
-                </tr>
-            </table>
+        <div class="oj-md-2">
+            <lable for="role">役割</lable>
+            <select id="role" data-bind="ojComponent: {component: 'ojSelect',
+                multiple: false, 
+                value:role}"
+                style="max-width: 90%">
+                <!-- ko foreach: roleArray -->
+                <option data-bind="value:value, text:value"></option>
+                <!-- /ko -->
+            </select>
+        </div>
+        <div class="oj-md-2">
+            <lable for="projectCount">人数</lable></br>
+            <input id="projectCount" data-bind="ojComponent: {component: 'ojInputText', 
+                value:projectCount}"
+                style="max-width: 30%"/>
+        </div>
+        <div class="oj-md-2" align="right">
+            </br>
+            <div style="padding-right: 5px">
+                <!-- ko if: buttonMode() == 'add' -->
+                <button id="add" data-bind="click: addClick,    
+                    ojComponent: {component: 'ojButton', 
+                        label: '追加',
+                        disabled: shouldDisableAddButton()}">
+                </button>
+                <!-- /ko -->
+                <!-- ko if: buttonMode() == 'update' -->
+                <button id="upd" data-bind="click: updateClick, 
+                    ojComponent: {component: 'ojButton', 
+                        label: '更新',
+                        disabled: shouldDisableAddButton()}">
+                </button>
+                <!-- /ko -->
+            </div>
         </div>
     </div>
     <div style="display:none" id="modalDialog" title="削除確認" 
@@ -214,13 +181,12 @@
             <div data-bind="ojComponent: {component: 'ojRowExpander', 
                 context: $rowContext}"></div>
             <span data-bind="text: $parent.moment(startDate).format('YYYY/MM') 
-                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')"></span>
+                + ' ～ ' + $parent.moment(endDate).format('YYYY/MM')
+                + ' (' + term + ')'"></span>
         </td>
         <td data-bind="text: industryType"></td>
         <td data-bind="text: workName"></td>
-        <td data-bind="text: os"></td>
-        <td data-bind="text: language"></td>
-        <td data-bind="text: db"></td>
+        <td data-bind="text: role"></td>
         <td>
             <button id="edit" data-bind="click: $parent.editClick, 
                 ojComponent: {component: 'ojButton', label: '編集'}">
@@ -233,17 +199,29 @@
         <!-- ko if: $rowContext['depth'] == 2 -->
         <td colspan="7" style="padding-left: 40px;">
             <div calss="oj-flex-items-pad" style="max-width: 100%; white-space:normal">
-                <div class="oj-flex">
-                    <div class="oj-flex-item oj-md-5">作業内容</div>
-                    <div class="oj-flex-item oj-md-2">役割</div>
-                    <div class="oj-flex-item oj-md-1">人数</div>
-                    <div class="oj-flex-item oj-md-4">作業工程</div>
+                <div class="oj-flex" style="font-weight:bold">
+                    <div class="oj-flex-item oj-md-2">機種</div>
+                    <div class="oj-flex-item oj-md-2">OS</div>
+                    <div class="oj-flex-item oj-md-2">言語</div>
+                    <div class="oj-flex-item oj-md-2">DB</div>
+                    <div class="oj-flex-item oj-md-2">その他ソフト    </div>
+                    <div class="oj-flex-item oj-md-2">人数</div>
                 </div>
                 <div class="oj-flex">
-                    <div class="oj-flex-item oj-md-5" data-bind="text: workOutline"></div>
-                    <div class="oj-flex-item oj-md-2" data-bind="text: role"></div>
-                    <div class="oj-flex-item oj-md-1" data-bind="text: projectCount"></div>
-                    <div class="oj-flex-item oj-md-4" data-bind="foreach: phases">
+                    <div class="oj-flex-item oj-md-2" data-bind="text: model"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: os"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: language"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: db"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: other"></div>
+                    <div class="oj-flex-item oj-md-2" data-bind="text: projectCount"></div>
+                </div>
+                <div class="oj-flex" style="font-weight:bold">
+                    <div class="oj-flex-item oj-md-6">作業内容</div>
+                    <div class="oj-flex-item oj-md-6">作業工程</div>
+                </div>
+                <div class="oj-flex">
+                    <div class="oj-flex-item oj-md-6" data-bind="text: workOutline"></div>
+                    <div class="oj-flex-item oj-md-6" data-bind="foreach: phases">
                         <span data-bind="text: phaseName"></span>
                     </div>
                 </div>
