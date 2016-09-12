@@ -24,7 +24,7 @@
 <tr>
 	<td>type</td>
 	<td>id=employeeCode</td>
-	<td>2917</td>
+	<td>3365</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -44,17 +44,17 @@
 <tr>
 	<td>assertText</td>
 	<td>id=employeeName</td>
-	<td>笠井　智</td>
+	<td>立石　円</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=undefined:_hdrCol0_1224133282</td>
-	<td>ITIL V3 Foundation</td>
+	<td>//div[4]/div/div/div/div/div/table/tbody/tr/td[2]</td>
+	<td>基本情報技術者（H21)</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=undefined:_hdrCol0_-58157038</td>
-	<td>PM実践力研修</td>
+	<td>//div[4]/div/div/div/div/div[2]/div/table/tbody/tr/td[2]</td>
+	<td>基本情報技術者 徹底演習コース</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -89,7 +89,52 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='shoListView']/div/ul/li[1]/span</td>
-	<td>01．Express5800/100</td>
+	<td>02．WindowsXP Home Edition</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=employeeCode</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=employeeCode</td>
+	<td>2917</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//table[@id='listview']/tbody/tr/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='listview']/tbody/tr/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@id='categoryDetailsArea']/div/div/div/div/div/table/tbody/tr/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=employeeName</td>
+	<td>笠井　智</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[4]/div/div/div/div/div/table/tbody/tr/td[2]</td>
+	<td>プロジェクトマネージャ（H21)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=td.oj-table-no-data-message</td>
+	<td>表示するデータがありません。</td>
 </tr>
 <tr>
 	<td>click</td>
