@@ -33,7 +33,10 @@ requirejs.config(
     {
       exports: ["jQuery", "$"]
     }
-  }
+  },
+
+  // キャッシュ対策
+  urlArgs: "ｖ=" + (new Date()).getTime()
 }
 );
 
