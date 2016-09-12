@@ -1,15 +1,21 @@
 <h1>社員一覧</h1>
 <div class="oj-flex">
-    <div class="oj-flex-items oj-sm-12 oj-md-6">
+    <div class="oj-flex-items oj-sm-12 oj-md-4">
         <label for="employeeCode" class="oj-label-inline">社員番号</label>
         <input id="employeeCode" aria-label="search box" placeholder="search" 
             data-bind="value: codeSearch, valueUpdate: 'afterkeydown', 
             ojComponent: {component: 'ojInputText'}"/>
     </div>
-    <div class="oj-flex-items oj-sm-12 oj-md-6">
+    <div class="oj-flex-items oj-sm-12 oj-md-4">
         <label for="employeeName" class="oj-label-inline">社員名</label>
         <input id="employeeName" aria-label="search box" placeholder="search" 
             data-bind="value: nameSearch, valueUpdate: 'afterkeydown', 
+            ojComponent: {component: 'ojInputText'}"/>
+    </div>
+    <div class="oj-flex-items oj-sm-12 oj-md-4">
+        <label for="belongCd" class="oj-label-inline">所属CD</label>
+        <input id="belongCd" aria-label="search box" placeholder="search" 
+            data-bind="value: belongCodeSearch, valueUpdate: 'afterkeydown', 
             ojComponent: {component: 'ojInputText'}"/>
     </div>
 </div>
@@ -22,6 +28,7 @@
             columnsDefault: {sortable: 'none'}, 
             columns: [{headerText: '社員番号'},
                         {headerText: '社員名'},
+                        {headerText: '所属CD'},
                         {headerText: '所属名'}],
             selectionMode: 'single',
             scrollPolicy: 'loadMoreOnScroll',
@@ -35,6 +42,7 @@
     <tr data-bind="click: function(data, event){$root.showEmployee(employeeCode,data,event)}">
         <td data-bind="text: employeeCode"></td>
         <td data-bind="text: employeeName"></td>
+        <td data-bind="text: belongCode"></td>
         <td data-bind="text: belongName"></td>
     </tr>
 </script>
