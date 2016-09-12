@@ -155,33 +155,33 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 career.role = stringRole(self.role());
                 career.phases = [];
                 self.phases().forEach(function(phase, i) {
-                    career.phases.push({"phaseName": phase})
+                    career.phases.push({"phaseCode": phase.split(".")[0]})
                 })
 
-                // // 業務経歴のPOST
-                // // var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers';
+                // 業務経歴のPOST
+                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers';
                 // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers';
-                // console.log(career);
-                // $.ajax({
-                //     url: url,
-                //     type: 'POST',
-                //     data: JSON.stringify(career),
-                //     contentType: 'application/json',
-                //     dataType: 'json',
-                // }).done(function(data) {
-                //     // 更新成功時の処理
+                console.log(career);
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: JSON.stringify(career),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                }).done(function(data) {
+                    // 更新成功時の処理
 
-                //     // 明細行の更新
+                    // 明細行の更新
                     self.careers.unshift(convertCareerArray(career));
                     var options = [];
                     self.careerData(new oj.FlattenedTreeTableDataSource(
                         new oj.FlattenedTreeDataGridDataSource(
                             new oj.JsonTreeDataSource(self.careers()), options)));
                     clearForm();
-                // }).fail(function(data) {
-                //     // 更新失敗時の処理
-                //     console.log(data);
-                // });
+                }).fail(function(data) {
+                    // 更新失敗時の処理
+                    console.log(data);
+                });
 
             }
 
