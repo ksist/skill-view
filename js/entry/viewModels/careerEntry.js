@@ -147,9 +147,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 career.startDate = self.startDate();
                 career.endDate = self.endDate();
                 career.workName = self.workName();
+                career.model = self.model();
                 career.os = self.os();
                 career.language = self.language();
                 career.db = self.db();
+                career.other = self.other();
                 career.workOutline = self.workOutline();
                 career.projectCount = self.projectCount();
                 career.role = stringRole(self.role());
@@ -161,7 +163,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 // 業務経歴のPOST
                 var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers';
                 // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers';
-                console.log(career);
+                // console.log(career);
                 $.ajax({
                     url: url,
                     type: 'POST',
