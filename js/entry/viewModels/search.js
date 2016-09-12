@@ -6,6 +6,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                 self.allEmployee = ko.observableArray([]);
                 self.nameSearch = ko.observable('');
                 self.codeSearch = ko.observable('');
+                self.belongCodeSearch = ko.observable('');
                 self.isLoading = ko.observable(true);
 
                 // 社員一覧の取得
@@ -16,6 +17,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                         self.allEmployee.push({
                             employeeCode: this.employeeCode,
                             employeeName: this.employeeName,
+                            belongCode: this.belongCode,
                             belongName: this.belongName,
                             grade: this.grade,
                             jobTitle: this.jobTitle
@@ -30,7 +32,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                     var employeeFilter = new Array();
 
                     if (self.allEmployee().length !== 0) {
-                        if (self.nameSearch().length === 0 && self.codeSearch().length === 0)
+                        if (self.nameSearch().length === 0 && 
+                            self.codeSearch().length === 0 && 
+                            self.belongCodeSearch().length === 0)
                         {
                             employeeFilter = self.allEmployee();
                         } else if (self.nameSearch().length !== 0) {
@@ -47,6 +51,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                                 function (r) {
                                     var token = self.codeSearch();
                                     if (r.employeeCode.indexOf(token) === 0) {
+                                        employeeFilter.push(r);
+                                    }
+                                }
+                            );
+                        } else if (self.belongCodeSearch().length !== 0) {
+                            ko.utils.arrayFilter(self.allEmployee(),
+                                function (r) {
+                                    var token = self.belongCodeSearch();
+                                    if (r.belongCode.indexOf(token) === 0) {
                                         employeeFilter.push(r);
                                     }
                                 }
