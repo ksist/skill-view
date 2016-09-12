@@ -41,7 +41,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
              */
             self.loadData = function (id) {
                 return new Promise(function (resolve, reject) {
-                    var url = "js/test/employee" + id + ".json";
+                    // var url = "js/test/employee" + id + ".json";
+                    var url = 'http://172.16.9.99/rest/employees/' + id;
+                    // var url = 'http://localhost:8080/skill/employees/' + id;
                     $.getJSON(url).then(function(person) {
                         self.employee = person;
                         self.examData = new oj.ArrayTableDataSource(person.exams);
