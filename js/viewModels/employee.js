@@ -47,7 +47,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                     $.getJSON(url).then(function(person) {
                         self.employee = person;
                         self.examData = new oj.ArrayTableDataSource(person.exams);
-                        self.eduData = new oj.ArrayTableDataSource(person.educations);
+                        self.eduData = new oj.ArrayTableDataSource(convertEduData(person.educations));
                         self.allInventory = person.inventories;
                         ko.utils.arrayForEach(distinctArray(self.allInventory, "daiName"), function(r) {
                             self.daiArray.push({
@@ -198,6 +198,20 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                 }
                 term = term  + termMonth % 12 + 'ヶ月' 
                 return term;
+            }
+
+            /**
+             * 終了日がnull の場合に空白で置き換える
+             * @param 教育受講履歴
+             * @return 終了日がnullの場合に空白に変換した受講履歴
+             */
+            function convertEduData(educations) {
+                educations.forEach(function(education, i) {
+                    if(!('endDate' in education)) {
+                        education['endDate'] = "";
+                    }
+                })
+                return educations;
             }
 
         }
