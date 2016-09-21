@@ -216,7 +216,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 $("#modalDialog").ojDialog("close"); 
 
                 // 業務経歴のDELETE
-                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers' + self.careerNumber;
+                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
                 // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
                 $.ajax({
                     url: url,
@@ -320,7 +320,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 })
 
                 // 業務経歴のPUT
-                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers' + self.rowId;;
+                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;;
                 // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
                 $.ajax({
                     url: url,
