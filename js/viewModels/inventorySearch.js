@@ -1,5 +1,5 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledatasource'],
-    function (oj, ko, $)
+define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojtable', 'ojs/ojarraytabledatasource'],
+    function (oj, ko, $, common)
     {
         function inventorySearchViewModel() {
             var self = this;
@@ -15,8 +15,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
             /**
              * スキルズインベントリデータの取得
              */
-            // var url = 'js/test/inventories.json';
-            var url = 'http://172.16.9.99/rest/inventories'
+            var url = common.contextUrl + 'inventories'
             $.getJSON(url).then(function(inventories) {
                 $.each(inventories, function() {
                     self.allInventory.push({

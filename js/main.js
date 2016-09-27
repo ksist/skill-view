@@ -22,7 +22,8 @@ requirejs.config(
     "knockout-amd-helpers": "../bower_components/knockout-amd-helpers/build/knockout-amd-helpers",
     "text": "../bower_components/text/text",
     "signals": "../bower_components/js-signals/dist/signals",
-    "moment": "../bower_components/moment/moment"
+    "moment": "../bower_components/moment/moment",
+    "common": "common"
   }
   //endinjector
   ,

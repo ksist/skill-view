@@ -1,5 +1,5 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
-        function (oj, ko, $)
+define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojtable'],
+        function (oj, ko, $, common)
         {
             function empoyeeListViewModel($params) {
                 var self = this;
@@ -13,16 +13,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
                 var url;
                 // 呼び出し元から渡されたパラメータの種類によってデータの取得元を変更
                 if (self.condition.examName) {
-                    // url = "js/test/employee" + self.condition.examName + ".json";
-                    url = 'http://172.16.9.99/rest/employees/exam/' + self.condition.examName;
+                    url = common.contextUrl + 'employees/exam/' + self.condition.examName;
                     self.searchCondition = '資格名： ' + self.condition.examName;
                 } else if (self.condition.educationName) {
-                    // url = "js/test/employeeedu" + self.condition.educationCode + ".json";
-                    url = 'http://172.16.9.99/rest/employees/education/' + self.condition.educationName;
+                    url = common.contextUrl + 'employees/education/' + self.condition.educationName;
                     self.searchCondition = '教育名： ' + self.condition.educationName;
                 } else if (self.condition.inventoryCode) {
-                    // url = "js/test/employeeskill" + self.condition.inventoryCode + "level" + self.condition.level + ".json";
-                    url = 'http://172.16.9.99/rest/employees/inventory/' + self.condition.inventoryCode + '/level/' + self.condition.level;
+                    url = common.contextUrl + 'employees/inventory/' + self.condition.inventoryCode + '/level/' + self.condition.level;
                     self.searchCondition = 'スキル： ' + self.condition.shoName + ' レベル' + self.condition.dispLevel;
                 }
 

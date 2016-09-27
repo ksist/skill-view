@@ -1,13 +1,11 @@
 var CareerModel = (function () {
-  var contextUrl = 'http://172.16.9.99/rest/employees/';
-  // var contextUrl = 'http://localhost:8080/skill/employees/';
-  function CareerModel() {
-    this.contextUrl = contextUrl;
+  function CareerModel(contextUrl) {
+    this.contextUrl = contextUrl + 'employees/';
   }
   
   // 挿入処理
   CareerModel.prototype.insert = function(employeeCode, career) {
-    var url = contextUrl + employeeCode + '/careers';
+    var url = this.contextUrl + employeeCode + '/careers';
     return $.ajax({
         url: url,
         type: 'POST',
@@ -19,7 +17,7 @@ var CareerModel = (function () {
                 
   // 更新処理
   CareerModel.prototype.update = function(employeeCode, careerNumber, career) {
-    var url = contextUrl + employeeCode + '/careers/' + careerNumber;
+    var url = this.contextUrl + employeeCode + '/careers/' + careerNumber;
     return $.ajax({
         url: url,
         type: 'PUT',
@@ -31,7 +29,7 @@ var CareerModel = (function () {
 
   // 削除処理
   CareerModel.prototype.delete = function (employeeCode, careerNumber) {
-    var url = contextUrl + employeeCode + '/careers/' + careerNumber;
+    var url = this.contextUrl + employeeCode + '/careers/' + careerNumber;
     return $.ajax({
         url: url,
         type: 'DELETE',

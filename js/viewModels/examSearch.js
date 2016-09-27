@@ -1,5 +1,5 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
-    function (oj, ko, $)
+define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojtable'],
+    function (oj, ko, $, common)
     {
         function searchViewModel() {
             var self = this;
@@ -8,8 +8,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable'],
             self.nameSearch = ko.observable('');
             self.isLoading = ko.observable(true);
 
-            // var url = 'js/test/exams.json';
-            var url = 'http://172.16.9.99/rest/exams';
+            var url = common.contextUrl + 'exams';
             $.getJSON(url).then(function(exams) {
                 $.each(exams, function() {
                     self.allExam.push({

@@ -1,5 +1,5 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable', 'ojs/ojarraytabledatasource'],
-        function (oj, ko, $)
+define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojpagingcontrol', 'ojs/ojtable', 'ojs/ojarraytabledatasource'],
+        function (oj, ko, $, common)
         {
             function searchViewModel() {
                 var self = this;
@@ -10,8 +10,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojpagingcontrol', 'ojs/ojtable'
                 self.isLoading = ko.observable(true);
 
                 // 社員一覧の取得
-                var url = 'http://172.16.9.99/rest/employees';
-                // var url = 'js/test/employees.json';
+                var url = common.contextUrl + 'employees';
                 $.getJSON(url).then(function(employees) {
                     $.each(employees, function() {
                         self.allEmployee.push({

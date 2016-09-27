@@ -1,11 +1,10 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdialog', 
+define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',　'ojs/ojdialog', 
         'ojs/ojrowexpander', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox',
         'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource', 
-        'ojs/ojinputnumber', 'ojs/ojknockout-validation',
-        'model'],
-    function (oj, ko, $, moment)
+        'ojs/ojinputnumber', 'ojs/ojknockout-validation', 'model'],
+    function (oj, ko, $, common, moment)
     {
-        var careerModel = new CareerModel();
+        var careerModel = new CareerModel(common.contextUrl);
         function careerEntryViewModel() {
             var self = this;
             self.moment = moment;

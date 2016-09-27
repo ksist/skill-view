@@ -23,6 +23,7 @@ requirejs.config(
     "text": "../../bower_components/text/text",
     "signals": "../../bower_components/js-signals/dist/signals",
     "moment": "../../bower_components/moment/moment",
+    "common": "../common",
     "model": "models/careerModel"
   }
   //endinjector
