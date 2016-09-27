@@ -137,9 +137,11 @@
         </div>
         <div class="oj-md-2">
             <lable for="projectCount">人数</lable></br>
-            <input id="projectCount" data-bind="ojComponent: {component: 'ojInputText', 
-                value:projectCount}"
-                style="max-width: 30%"/>
+            <input id="projectCount" data-bind="ojComponent: {component: 'ojInputNumber', 
+                value:projectCount,
+                min: 0,
+                invalidComponentTracker: tracker,
+                rootAttributes: {style: 'max-width: 30%'}}"/>
         </div>
         <div class="oj-md-2" align="right">
             </br>

@@ -1,8 +1,11 @@
 define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdialog', 
         'ojs/ojrowexpander', 'ojs/ojdatetimepicker', 'ojs/ojselectcombobox',
-        'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource', 'ojs/ojknockout-validation'],
+        'ojs/ojflattenedtreedatagriddatasource', 'ojs/ojjsontreedatasource', 
+        'ojs/ojinputnumber', 'ojs/ojknockout-validation',
+        'model'],
     function (oj, ko, $, moment)
     {
+        var careerModel = new CareerModel();
         function careerEntryViewModel() {
             var self = this;
             self.moment = moment;
@@ -90,7 +93,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
              */
             self.loadData = function (id) {
                 return new Promise(function (resolve, reject) {
-                    var url = 'http://172.16.9.99/rest/employees/' + id;
+                    var url = careerModel.contextUrl + id;
                     $.getJSON(url).then(function(person) {
                         self.employee = person;
                         person.careers.forEach(function (career, i) {
@@ -102,7 +105,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                                 new oj.JsonTreeDataSource(self.careers()), options)));
 
                         resolve(true);
-                    }).fail(function (error) {
+                    }, function (error) {
                         console.log('Error: ' + error.message);
                         resolve(false);
                     });
@@ -164,18 +167,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                     })
                 })
 
-                // 業務経歴のPOST
-                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers';
-                // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers';
-                $.ajax({
-                    url: url,
-                    type: 'POST',
-                    data: JSON.stringify(career),
-                    contentType: 'application/json',
-                    dataType: 'json',
-                }).done(function(data) {
+                self.isLoading(true);
+                // 業務経歴の追加
+                careerModel.insert(self.employee.employeeCode, career).then(function(data) {
                     // 更新成功時の処理
-
                     career.careerNumber = data.careerNumber;
                     // 明細行の更新
                     self.careers.unshift(convertCareerArray(career));
@@ -184,11 +179,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                         new oj.FlattenedTreeDataGridDataSource(
                             new oj.JsonTreeDataSource(self.careers()), options)));
                     clearForm();
-                }).fail(function(data) {
+                }, function(data) {
                     // 更新失敗時の処理
                     console.log(data);
+                }).always(function() {
+                    self.isLoading(false);
                 });
-
+                    
             }
 
             /**
@@ -215,16 +212,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
             self.handleOKClose = function(data, event) {
                 $("#modalDialog").ojDialog("close"); 
 
+                self.isLoading(true);
                 // 業務経歴のDELETE
-                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
-                // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
-                $.ajax({
-                    url: url,
-                    type: 'DELETE',
-                    contentType: 'application/json'
-                }).then(function(data) {
-                    // 更新成功時の処理
-                    
+                careerModel.delete(self.employee.employeeCode, self.careerNumber).then(function(data) {
+                    // 削除成功時の処理
+                    // 一覧から該当の経歴を削除
                     self.careers().forEach(function(career, i) {
                         if (career.attr.careerNumber === self.careerNumber) {
                             self.careers.splice(i, 1);
@@ -242,6 +234,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 }, function(data) {
                     // 更新失敗時の処理
                     console.log(data);
+                }).always(function() {
+                    self.isLoading(false);
                 });
             };
 
@@ -299,6 +293,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 }
 
                 tempCareer = {};
+                tempCareer.careerNumber = self.careerNumber;
                 tempCareer.industryType = self.industryType();
                 tempCareer.startDate = self.startDate();
                 tempCareer.endDate = self.endDate();
@@ -319,16 +314,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                     })
                 })
 
-                // 業務経歴のPUT
-                var url = 'http://172.16.9.99/rest/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;;
-                // var url = 'http://localhost:8080/skill/employees/' + self.employee.employeeCode + '/careers/' + self.careerNumber;
-                $.ajax({
-                    url: url,
-                    type: 'PUT',
-                    data: JSON.stringify(tempCareer),
-                    contentType: 'application/json',
-                    dataType: 'json',
-                }).then(function(data) {
+                self.isLoading(true);
+                // 更新処理
+                careerModel.update(
+                        self.employee.employeeCode, 
+                        self.careerNumber, 
+                        tempCareer
+                    ).then(function(data) {
                     // 更新成功時の処理
                     
                     self.careers().forEach(function(career, i) {
@@ -344,6 +336,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',　'ojs/ojdi
                 }, function(data) {
                     // 更新失敗時の処理
                     console.log(data);
+                }).always(function() {
+                    self.isLoading(false);
                 });
 
             }
