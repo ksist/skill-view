@@ -2,7 +2,8 @@
 ===============
 
 ## Overview（概要）
-スキル可視化のWeb画面
+スキル可視化のWeb画面  
+フレームワークの解説は[Wiki](/gitbucket/2917/skill-view/wiki)を参照
 
 仕様等は[こちら](/gitbucket/2917/skill-spec)を参照
 
