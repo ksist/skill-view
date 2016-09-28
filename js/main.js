@@ -37,7 +37,7 @@ requirejs.config(
   },
 
   // キャッシュ対策
-  urlArgs: "ｖ=" + (new Date()).getTime()
+//   urlArgs: "ｖ=" + (new Date()).getTime()
 }
 );
 
@@ -61,6 +61,7 @@ require(["ojs/ojcore",
             var self = this;
             self.copyright = ko.observable("Copyright © 2016, NCS&A Co., Ltd.");
             self.params = ko.observable();
+            self.errorMessage = ko.observable();
 
             // URLルールティングの設定
             var router = oj.Router.rootInstance;
@@ -79,7 +80,8 @@ require(["ojs/ojcore",
                 'employeeSearch': {label: '社員一覧'},
                 'examSearch': {label: '資格検索'},
                 'educationSearch': {label: '教育検索'},
-                'inventorySearch': {label: 'スキル検索'}
+                'inventorySearch': {label: 'スキル検索'},
+                'error': {label: 'システムエラー'}
             })
             self.router = router;
             self.moduleConfig = ko.pureComputed(function () {

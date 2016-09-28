@@ -23,7 +23,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojpagingcontrol',
                             jobTitle: this.jobTitle
                         });
                     });
-                }).always(function() {
+                }, function(data) {
+                    if (common.debug) {
+                        console.log(data);
+                    }
+                    var rootViewModel = ko.dataFor(document.getElementById('mainContent'));
+                    var router = rootViewModel.router;
+                    rootViewModel.errorMessage('サーバに接続できませんでした');
+                    router.go('error');
+                }).always(function(data) {
                     self.isLoading(false);
                 });
                 

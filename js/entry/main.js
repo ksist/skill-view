@@ -60,6 +60,7 @@ require(["ojs/ojcore",
 
         function MainViewModel() {
             var self = this;
+            self.errorMessage = ko.observable();
 
             // URLルールティングの設定
             var router = oj.Router.rootInstance;
@@ -74,7 +75,8 @@ require(["ojs/ojcore",
                         var childRouter = router.currentState().value;
                         childRouter.dispose();
                     }
-                }
+                },
+                'error': {label: 'システムエラー'}
             })
             self.router = router;
             self.moduleConfig = ko.pureComputed(function () {

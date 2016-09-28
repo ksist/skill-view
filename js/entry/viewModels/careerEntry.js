@@ -105,7 +105,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',�
 
                         resolve(true);
                     }, function (error) {
-                        console.log('Error: ' + error.message);
+                        gotoError(error);
                         resolve(false);
                     });
                     self.isLoading(false);
@@ -180,7 +180,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',�
                     clearForm();
                 }, function(data) {
                     // 更新失敗時の処理
-                    console.log(data);
+                    gotoError(data);
                 }).always(function() {
                     self.isLoading(false);
                 });
@@ -232,7 +232,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',�
                     clearForm();
                 }, function(data) {
                     // 更新失敗時の処理
-                    console.log(data);
+                    gotoError(data);
                 }).always(function() {
                     self.isLoading(false);
                 });
@@ -334,7 +334,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',�
                     clearForm();
                 }, function(data) {
                     // 更新失敗時の処理
-                    console.log(data);
+                    gotoError(data);
                 }).always(function() {
                     self.isLoading(false);
                 });
@@ -477,6 +477,21 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'moment', 'ojs/ojtable',�
                 } else {
                     return role;
                 }
+            }
+
+            /**
+             * エラー画面に遷移する
+             * @param data レスポンスデータ
+             * @param errorMsg エラーメッセージ
+             */
+            function gotoError(data, errorMsg) {
+                if (common.debug) {
+                    console.log(data);
+                }
+                var rootViewModel = ko.dataFor(document.getElementById('mainContent'));
+                var router = rootViewModel.router;
+                rootViewModel.errorMessage(errorMsg);
+                router.go('error');
             }
         }
         return careerEntryViewModel;

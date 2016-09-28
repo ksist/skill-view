@@ -58,7 +58,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'moment', 'ojs/ojtable',
                                 new oj.JsonTreeDataSource(convertCareerArray(person.careers)), options));
                         resolve(true);
                     }).fail(function (error) {
-                        console.log('Error: ' + error.message);
+                        if (common.debug) {
+                            console.log(error);
+                        }
+                        var rootViewModel = ko.dataFor(document.getElementById('mainContent'));
+                        var router = rootViewModel.router;
+                        router.go('error');
                         resolve(false);
                     });
                     self.isLoading(false);

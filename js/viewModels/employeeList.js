@@ -36,6 +36,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'common', 'ojs/ojtable'],
                             jobTitle: this.jobTitle
                         });
                     })
+                }, function(data) {
+                    if (common.debug) {
+                        console.log(data);
+                    }
+                    var rootViewModel = ko.dataFor(document.getElementById('mainContent'));
+                    var router = rootViewModel.router;
+                    router.go('error');
                 }).always(function() {
                     self.isLoading(false);
                 });
