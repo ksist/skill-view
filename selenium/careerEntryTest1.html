@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8000" />
+<title>careerEntryTest1</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">careerEntryTest1</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/entry.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=employeeCode</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=employeeCode</td>
+	<td>2917</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//table[@id='listview']/tbody/tr/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//table[@id='listview']/tbody/tr/td[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//td[@id='undefined:_hdrCol0_108508543']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=startDate</td>
+	<td>3015/1</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=startDate</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=endDate</td>
+	<td>3016/4</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=endDate</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=industryType</td>
+	<td>建築施工</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=industryType</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=workName</td>
+	<td>施工・販売管理システム</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=workName</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=model</td>
+	<td>Windowsサーバー</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=model</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=os</td>
+	<td>Windows Server 2012</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=os</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=language</td>
+	<td>Java 1.7 / JavaScript</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=language</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=db</td>
+	<td>Oracle11g</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=db</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=other</td>
+	<td>intra-mart Accel Platform</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=other</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=workOutline</td>
+	<td>施工・販売管理システム(スクラッチ)のintra-mart基盤設計、構築</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=workOutline</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=projectCount</td>
+	<td>15</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=projectCount</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table/tbody/tr[1]/td[2]/span</td>
+	<td>3015/01 ～ 3016/04 (1年4ヶ月)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//table/tbody/tr[1]/td[4]</td>
+	<td>施工・販売管理システム</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>sendKeys</td>
+	<td>id=workName</td>
+	<td>テスト</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=workName</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=upd</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//table/tbody/tr[1]/td[4]</td>
+	<td>施工・販売管理システムテスト</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=del</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>id=okButton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=okButton</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
